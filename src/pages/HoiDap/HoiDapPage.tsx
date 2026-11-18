@@ -14,11 +14,11 @@ interface QAExchange {
 }
 
 const SAMPLE_QUESTIONS = [
-  'Đình nào có tư liệu hoành phi?',
-  'Chùa nào có câu đối đã được kiểm chứng?',
-  'Nhà thờ họ nào đang lưu giữ hoành phi?',
+  'Tìm các hoành phi tại nhà thờ họ ở Hà Nội.',
+  'Tìm tư liệu của dòng họ Nguyễn.',
+  'Những câu đối nào đã có phiên âm được kiểm chứng?',
+  'Tư liệu nào đang có ảnh nhưng chưa có phiên âm?',
   'Tìm những hồ sơ có bản gốc còn nguyên vẹn?',
-  'Những tư liệu nào chưa được phiên âm?',
   'Tìm các tư liệu đang chờ kiểm chứng?',
 ];
 

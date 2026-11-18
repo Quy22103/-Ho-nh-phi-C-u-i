@@ -46,10 +46,10 @@ export function GioiThieuPage() {
         </h2>
         <div className="space-y-3 text-base font-serif text-ink leading-relaxed">
           <p className="font-semibold text-walnut-deep">
-            Sản phẩm thực tập của Trương Văn Quý, mã sinh viên PH68121, Nhóm 2, Chương trình Thực tập sinh Đợt 15 FPT Polytechnic và IMTA TECH.
+            Sản phẩm thực tập của Trương Văn Quý, mã sinh viên PH68121, Nhóm 2, thuộc Chương trình Thực tập sinh Đợt 15 FPT Polytechnic và IMTA TECH. Đây là dự án xã hội phi lợi nhuận, hướng tới bảo tồn và phát huy giá trị di sản văn hóa truyền thống.
           </p>
           <p>
-            Dự án xã hội phi lợi nhuận, hướng tới việc số hóa, lưu trữ và phát huy giá trị tư liệu hoành phi, câu đối tại các đình, chùa, đền, miếu và nhà thờ họ trên địa bàn thành phố Hà Nội.
+            Hệ thống hướng tới việc số hóa, lưu trữ và phát huy giá trị tư liệu hoành phi, câu đối tại các đình, chùa, đền, miếu và nhà thờ họ trên địa bàn toàn Thành phố Hà Nội.
           </p>
         </div>
       </section>

@@ -2,9 +2,1901 @@
   "metadata": {
     "ten_du_an": "Hồ sơ số Hoành phi - Câu đối Hà Nội",
     "phien_ban": "1.0",
-    "ngay_tao": "",
+    "ngay_tao": "2026-11-18",
     "mo_ta": "Cơ sở dữ liệu hồ sơ số hoành phi, câu đối trên địa bàn thành phố Hà Nội"
   },
-  "records": [],
-  "sources": []
+  "records": [
+    {
+      "identifier": "HN-DINH-001",
+      "title": "Hoành phi Ngự Triều Di Quy tại Đình Cổ Loa",
+      "ten_goi_khac": "Đại tự Ngự Triều Di Quy",
+      "creator": "Cộng đồng làng Cổ Loa (lập và phụng thờ)",
+      "subject": [
+        "Hoành phi",
+        "Đình Cổ Loa",
+        "An Dương Vương",
+        "Đông Anh"
+      ],
+      "description": "Bức hoành phi chữ Hán tại gian giữa Đình Cổ Loa (còn gọi là Đình Ngự Triều Di Quy), khẳng định di tích nằm trên nền điện thiết triều của vương triều Âu Lạc xưa.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Khu di tích Cổ Loa",
+        "Sở Văn hóa và Thể thao Hà Nội"
+      ],
+      "date": "Chưa xác định năm tạo tác cụ thể (thuộc không gian đình trùng tu thời Hậu Lê – Nguyễn)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-04"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DINH-002"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Đông Anh",
+        "don_vi_hanh_chinh_lich_su": "Huyện Đông Ngàn / Đông Anh, phủ Từ Sơn, trấn Kinh Bắc",
+        "phuong_xa_hien_nay": "Xã Cổ Loa",
+        "phuong_xa_lich_su": "Xã Cổ Loa",
+        "thon_lang": "Làng Cổ Loa",
+        "thoi_gian": "Truyền thống thời Hậu Lê – Nguyễn"
+      },
+      "rights": "Tư liệu văn khắc đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đình Cổ Loa (Đình Ngự Triều Di Quy)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đình Cổ Loa, xã Cổ Loa, huyện Đông Anh",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại gian chính điện di tích",
+      "so_dang_ky": "HN-DINH-001",
+      "nguoi_cho_phep_cong_bo": "Tư liệu di sản công bố công khai tại Khu di tích quốc gia đặc biệt Cổ Loa",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "御朝遺規",
+      "phien_am": {
+        "noi_dung": "Ngự Triều Di Quy",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Khuôn phép (quy củ) để lại của buổi thiết triều xưa.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Tên gọi 'Ngự Triều Di Quy' cũng là tên chữ của ngôi đình lớn tại Cổ Loa, tưởng nhớ triều đình An Dương Vương nước Âu Lạc.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Hồ sơ văn bản đối chiếu từ tư liệu giới thiệu và văn khắc tại Khu di tích Cổ Loa.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đình",
+      "ten_di_tich": "Khu di tích Quốc gia đặc biệt Cổ Loa",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng và biên mục hồ sơ văn bản từ nguồn di tích Cổ Loa",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DINH-002",
+      "title": "Câu đối Thục quốc sơn hà nguyên cổ Việt tại Đình Cổ Loa",
+      "ten_goi_khac": "Câu đối tòa đại đình Cổ Loa",
+      "creator": "Tác giả khuyết danh (biên soạn theo truyền thống Hán Nôm địa phương)",
+      "subject": [
+        "Câu đối",
+        "Đình Cổ Loa",
+        "Âu Lạc",
+        "Ngô Quyền",
+        "Đông Anh"
+      ],
+      "description": "Đôi câu đối chữ Hán trong tòa đại đình Cổ Loa, nêu bật mạch lịch sử nối liền nước Âu Lạc của Thục Phán An Dương Vương với triều đại Tiền Ngô của Ngô Quyền.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Khu di tích Cổ Loa",
+        "Tư liệu nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (gắn với đình Cổ Loa thời Nguyễn)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-04"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DINH-001"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Đông Anh",
+        "don_vi_hanh_chinh_lich_su": "Huyện Đông Ngàn / Đông Anh, phủ Từ Sơn, trấn Kinh Bắc",
+        "phuong_xa_hien_nay": "Xã Cổ Loa",
+        "phuong_xa_lich_su": "Xã Cổ Loa",
+        "thon_lang": "Làng Cổ Loa",
+        "thoi_gian": "Thời Nguyễn"
+      },
+      "rights": "Tư liệu văn khắc đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đình Cổ Loa (Đình Ngự Triều Di Quy)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đình Cổ Loa, xã Cổ Loa, huyện Đông Anh",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại tòa đại đình",
+      "so_dang_ky": "HN-DINH-002",
+      "nguoi_cho_phep_cong_bo": "Tư liệu di sản công bố công khai tại Khu di tích Cổ Loa",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "蜀國山河原古越 ／ 螺城宮寢肇前吳",
+      "phien_am": {
+        "noi_dung": "Thục quốc sơn hà nguyên cổ Việt / Loa thành cung tẩm xướng Tiền Ngô",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Sông núi nước Thục vốn là bờ cõi nước Việt cổ xưa / Cung điện đài gác thành Loa mở đầu từ thời nhà Ngô (Ngô Quyền).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Chữ 肇 (triệu/xướng) nhấn mạnh sự kiện năm 939 Ngô Quyền xưng vương và chọn Cổ Loa làm kinh đô.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Hồ sơ văn bản đối chiếu từ tư liệu Hán Nôm đình Cổ Loa.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đình",
+      "ten_di_tich": "Khu di tích Quốc gia đặc biệt Cổ Loa",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng và biên mục hồ sơ văn bản từ nguồn di tích Cổ Loa",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DINH-003",
+      "title": "Hoành phi Dũng cảm khả thưởng tại Đình Mông Phụ",
+      "ten_goi_khac": "Biển ngạch vua Thành Thái ban tặng làng Mông Phụ",
+      "creator": "Triều đình nhà Nguyễn (vua Thành Thái ban tặng năm 1906)",
+      "subject": [
+        "Hoành phi",
+        "Đình Mông Phụ",
+        "Đường Lâm",
+        "Sơn Tây",
+        "Thành Thái"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán 'Dũng cảm khả thưởng' do vua Thành Thái ban tặng năm 1906, hiện lưu giữ trang trọng tại Đình Mông Phụ, làng cổ Đường Lâm.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Làng cổ Đường Lâm"
+      ],
+      "date": "Năm 1906 (Thành Thái thứ 18)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-05",
+        "NGUON-08"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Thị xã Sơn Tây",
+        "don_vi_hanh_chinh_lich_su": "Huyện Phúc Lộc (sau là huyện Tùng Thiện), phủ Quảng Oai, tỉnh Sơn Tây",
+        "phuong_xa_hien_nay": "Xã Đường Lâm",
+        "phuong_xa_lich_su": "Tổng Cam Giá Thịnh",
+        "thon_lang": "Thôn Mông Phụ",
+        "thoi_gian": "1906"
+      },
+      "rights": "Tư liệu di tích đã công bố công khai; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đình Mông Phụ",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đình Mông Phụ, làng Mông Phụ, xã Đường Lâm",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại Đình Mông Phụ",
+      "so_dang_ky": "HN-DINH-003",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Làng cổ Đường Lâm",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, bảo tồn",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "勇敢可賞",
+      "phien_am": {
+        "noi_dung": "Dũng cảm khả thưởng",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Lòng dũng cảm đáng khen thưởng.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Bức hoành phi ghi nhận tinh thần quả cảm của dân làng Mông Phụ được triều Nguyễn ban thưởng năm 1906.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu niên đại 1906 và văn tự từ tư liệu di tích Đường Lâm.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đình",
+      "ten_di_tich": "Đình Mông Phụ – Làng cổ Đường Lâm",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản và niên đại 1906 từ hồ sơ di tích Đường Lâm",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DINH-004",
+      "title": "Hoành phi Càn khôn đoan nghê tại Đình Chèm",
+      "ten_goi_khac": "Đại tự gian đại bái Đình Chèm",
+      "creator": "Cộng đồng tổng Chèm (cung tiến phụng thờ Đức Thánh Lý Ông Trọng)",
+      "subject": [
+        "Hoành phi",
+        "Đình Chèm",
+        "Lý Ông Trọng",
+        "Bắc Từ Liêm"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán treo tại tòa đại bái Đình Chèm, ca ngợi sự linh thiêng hội tụ nguyên khí trời đất nơi phụng thờ Đức Thánh Chèm Lý Ông Trọng.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Đình Chèm",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (thuộc di tích cổ thời Lê – Nguyễn)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-05"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DINH-005"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Bắc Từ Liêm",
+        "don_vi_hanh_chinh_lich_su": "Huyện Từ Liêm, phủ Hoài Đức, tỉnh Hà Đông",
+        "phuong_xa_hien_nay": "Phường Thụy Phương",
+        "phuong_xa_lich_su": "Tổng Chèm (làng Thụy Hương)",
+        "thon_lang": "Làng Chèm",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Tư liệu di tích quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đình Chèm",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đình Chèm, làng Thụy Hương, tổng Chèm",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên trạng tại tòa đại bái Đình Chèm",
+      "so_dang_ky": "HN-DINH-004",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Quốc gia đặc biệt Đình Chèm",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, giáo dục",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "乾坤端倪",
+      "phien_am": {
+        "noi_dung": "Càn khôn đoan nghê",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Đầu mối của trời đất / Nơi khởi thủy khí thiêng càn khôn.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Khẳng định vị thế tụ khí sông Hồng và truyền thống lâu đời của di tích thờ Hy Khang Thiên Vương Lý Ông Trọng.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đối chiếu từ hồ sơ kiểm kê Hán Nôm Đình Chèm.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đình",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đình Chèm",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản từ hồ sơ Hán Nôm Đình Chèm",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DINH-005",
+      "title": "Câu đối Vạn cổ thần tâm huyền Bắc khuyết tại Đình Chèm",
+      "ten_goi_khac": "Câu đối ca ngợi công đức Đức Thánh Chèm",
+      "creator": "Danh sĩ địa phương biên soạn (lưu truyền tại Đình Chèm)",
+      "subject": [
+        "Câu đối",
+        "Đình Chèm",
+        "Lý Ông Trọng",
+        "Bắc Từ Liêm"
+      ],
+      "description": "Đôi câu đối 14 chữ tại Đình Chèm, ca ngợi tâm huyết bảo vệ non sông của Đức Thánh Lý Ông Trọng xuyên suốt từ thời đi sứ phương Bắc đến công hộ quốc phương Nam.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Đình Chèm",
+        "Hồ sơ văn khắc Hán Nôm"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (gắn với hệ thống câu đối cổ Đình Chèm)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-05"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DINH-004"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Bắc Từ Liêm",
+        "don_vi_hanh_chinh_lich_su": "Huyện Từ Liêm, phủ Hoài Đức, tỉnh Hà Đông",
+        "phuong_xa_hien_nay": "Phường Thụy Phương",
+        "phuong_xa_lich_su": "Tổng Chèm (làng Thụy Hương)",
+        "thon_lang": "Làng Chèm",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Tư liệu văn khắc đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đình Chèm",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đình Chèm, phường Thụy Phương, quận Bắc Từ Liêm",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại di tích Đình Chèm",
+      "so_dang_ky": "HN-DINH-005",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Quốc gia đặc biệt Đình Chèm",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "萬古神心懸北闕 ／ 千秋聖力護南邦",
+      "phien_am": {
+        "noi_dung": "Vạn cổ thần tâm huyền Bắc khuyết / Thiên thu thánh lực hộ Nam bang",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Muôn thuở lòng thần hướng về nơi cửa khuyết đất Bắc / Ngàn năm sức thánh che chở cho nước Nam.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Nhắc tích Lý Ông Trọng trấn giữ biên ải phương Bắc thời cổ và hiển linh hộ quốc an dân ở trời Nam.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đối chiếu nguyên văn Hán tự và dịch nghĩa từ tài liệu văn khắc Đình Chèm.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đình",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đình Chèm",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn Hán Nôm từ hồ sơ Đình Chèm",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-CHUA-001",
+      "title": "Hoành phi Phương Tiện Môn tại Chùa Trấn Quốc",
+      "ten_goi_khac": "Biển đề cổng Tam quan Chùa Trấn Quốc",
+      "creator": "Nhà chùa và thập phương tín thí (bảo tồn tại Chùa Trấn Quốc)",
+      "subject": [
+        "Hoành phi",
+        "Chùa Trấn Quốc",
+        "Hồ Tây",
+        "Phật giáo"
+      ],
+      "description": "Bức hoành phi ba chữ Hán 'Phương Tiện Môn' treo tại cổng chính chùa Trấn Quốc, mang ý nghĩa cửa ngõ dẫn dắt chúng sinh đi vào con đường tu tập giải thoát.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Hà Nội",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm tạo tác cụ thể (thuộc di tích lịch sử Chùa Trấn Quốc)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-03"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-CHUA-002"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Tây Hồ",
+        "don_vi_hanh_chinh_lich_su": "Huyện Vĩnh Thuận, phủ Phụng Thiên / Hoài Đức, Thăng Long",
+        "phuong_xa_hien_nay": "Phường Yên Phụ",
+        "phuong_xa_lich_su": "Phường Yên Hoa (sau đổi Yên Phụ)",
+        "thon_lang": "Đảo Kim Ngư, Hồ Tây",
+        "thoi_gian": "Truyền thống thời Lê – Nguyễn"
+      },
+      "rights": "Tư liệu văn hóa Phật giáo đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Chùa Trấn Quốc (Khai Quốc tự)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Chùa Trấn Quốc, bán đảo Kim Ngư, Hồ Tây",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại khu vực cổng chùa",
+      "so_dang_ky": "HN-CHUA-001",
+      "nguoi_cho_phep_cong_bo": "Tư liệu di sản công bố công khai tại Di tích Quốc gia đặc biệt Chùa Trấn Quốc",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "方便門",
+      "phien_am": {
+        "noi_dung": "Phương Tiện Môn",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Cửa Phương Tiện (cánh cửa uyển chuyển, khéo léo dẫn dắt người đời đến với Phật pháp).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Thuật ngữ 'Phương tiện' trong Phật học chỉ giáo pháp tùy duyên hóa độ chúng sinh.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Kiểm chứng từ tài liệu di tích Chùa Trấn Quốc.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Chùa",
+      "ten_di_tich": "Chùa Trấn Quốc",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Biên mục và kiểm chứng hoành phi Chùa Trấn Quốc",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-CHUA-002",
+      "title": "Câu đối Ngạch hoặc thiền lâm hoành tiệt Tây Hồ thủy kính tại Chùa Trấn Quốc",
+      "ten_goi_khac": "Câu đối cửa thiền Chùa Trấn Quốc",
+      "creator": "Thiền tăng / danh sĩ biên soạn tại Chùa Trấn Quốc",
+      "subject": [
+        "Câu đối",
+        "Chùa Trấn Quốc",
+        "Hồ Tây",
+        "Thiền lâm"
+      ],
+      "description": "Đôi câu đối 20 chữ Hán tại Chùa Trấn Quốc, miêu tả cảnh quan ngôi chùa soi bóng mặt gương Hồ Tây và ánh sáng Phật pháp lan tỏa cõi Đông.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Viện Nghiên cứu Hán Nôm",
+        "Ban Quản lý Di tích Hà Nội"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (lưu truyền từ thời Lê – Nguyễn)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-03"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-CHUA-001"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Tây Hồ",
+        "don_vi_hanh_chinh_lich_su": "Huyện Vĩnh Thuận, phủ Hoài Đức, Thăng Long",
+        "phuong_xa_hien_nay": "Phường Yên Phụ",
+        "phuong_xa_lich_su": "Phường Yên Phụ",
+        "thon_lang": "Đảo Kim Ngư, Hồ Tây",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Tư liệu văn khắc đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Chùa Trấn Quốc (Khai Quốc tự)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Chùa Trấn Quốc, đường Thanh Niên, quận Tây Hồ",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại di tích Chùa Trấn Quốc",
+      "so_dang_ky": "HN-CHUA-002",
+      "nguoi_cho_phep_cong_bo": "Tư liệu di sản công bố công khai tại Chùa Trấn Quốc",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "額豁禪林橫截西湖水鏡 ／ 門開淨地照臨東土佛光",
+      "phien_am": {
+        "noi_dung": "Ngạch hoặc thiền lâm, hoành tiệt Tây Hồ thủy kính / Môn khai tịnh địa, chiếu lâm Đông thổ Phật quang",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Cửa rừng thiền rộng mở, cắt ngang tấm gương nước Hồ Tây / Nơi đất sạch mở ra, soi chiếu ánh sáng Phật về cõi Đông.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Miêu tả địa thế bán đảo nhô ra giữa mặt nước Hồ Tây của ngôi cổ tự lâu đời bậc nhất Thăng Long.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đối chiếu nguyên văn Hán tự và dịch nghĩa từ văn khắc Chùa Trấn Quốc.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Chùa",
+      "ten_di_tich": "Chùa Trấn Quốc",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối Chùa Trấn Quốc",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-CHUA-003",
+      "title": "Hoành phi Đại Hùng Bảo Điện tại Chùa Thầy",
+      "ten_goi_khac": "Hoành phi chính điện Chùa Thượng (Thiên Phúc tự)",
+      "creator": "Cộng đồng phật tử và Ban quản lý Chùa Thầy",
+      "subject": [
+        "Hoành phi",
+        "Chùa Thầy",
+        "Từ Đạo Hạnh",
+        "Quốc Oai"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán treo tại Chùa Thượng thuộc quần thể di tích Chùa Thầy (Thiên Phúc tự), tôn vinh chính điện thờ Đức Phật Thích Ca Mâu Ni.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Cổng thông tin Thành phố Hà Nội",
+        "Ban Quản lý Di tích Chùa Thầy"
+      ],
+      "date": "Chưa xác định năm tạo tác cụ thể (thuộc di tích cổ thời Lý – Lê – Nguyễn)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-05",
+        "NGUON-08"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-NTH-003"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Quốc Oai",
+        "don_vi_hanh_chinh_lich_su": "Huyện Yên Sơn, phủ Quốc Oai, trấn Sơn Tây",
+        "phuong_xa_hien_nay": "Xã Sài Sơn",
+        "phuong_xa_lich_su": "Tổng Hoàng Xá",
+        "thon_lang": "Núi Sài Sơn (Phật Tích sơn)",
+        "thoi_gian": "Truyền thống thời Lý – Nguyễn"
+      },
+      "rights": "Tư liệu di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Chùa Thầy (Thiên Phúc tự – Chùa Thượng)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Chùa Thượng, Chùa Thầy, xã Sài Sơn, huyện Quốc Oai",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại chính điện Chùa Thượng",
+      "so_dang_ky": "HN-CHUA-003",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Quốc gia đặc biệt Chùa Thầy",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, học tập",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "大雄寶殿",
+      "phien_am": {
+        "noi_dung": "Đại Hùng Bảo Điện",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Điện báu Đại Hùng (chính điện thờ Phật Thích Ca Mâu Ni – đấng Đại Hùng hàng phục mọi phiền não).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Chùa Thầy gồm 3 tòa Hạ – Trung – Thượng song song theo thế 'Tam', trong đó Chùa Thượng là nơi đặt tượng Phật và hóa thân Thiền sư Từ Đạo Hạnh.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Kiểm chứng từ hồ sơ Di tích Quốc gia đặc biệt Chùa Thầy.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Chùa",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Chùa Thầy",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản từ hồ sơ di tích Chùa Thầy",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-CHUA-004",
+      "title": "Bức đề tự Nam thiên đệ nhất động tại Động Hương Tích – Chùa Hương",
+      "ten_goi_khac": "Bút tích chúa Trịnh Sâm tại cửa động Hương Tích",
+      "creator": "Tĩnh Đô Vương Trịnh Sâm (đề chữ năm 1770)",
+      "subject": [
+        "Hoành phi",
+        "Chùa Hương",
+        "Động Hương Tích",
+        "Trịnh Sâm",
+        "Mỹ Đức"
+      ],
+      "description": "Năm chữ Hán lớn khắc trên vách đá cửa động Hương Tích (quần thể danh thắng Chùa Hương – Hương Sơn), do chúa Trịnh Sâm đề tặng trong chuyến tuần du năm Canh Dần 1770.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Khu di tích thắng cảnh Hương Sơn",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Năm Canh Dần (1770), thời Lê – Trịnh",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-03"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Mỹ Đức",
+        "don_vi_hanh_chinh_lich_su": "Huyện Chương Đức / Mỹ Đức, phủ Ứng Hòa, tỉnh Hà Đông",
+        "phuong_xa_hien_nay": "Xã Hương Sơn",
+        "phuong_xa_lich_su": "Tổng Trinh Tiết",
+        "thon_lang": "Khu thắng cảnh Hương Sơn",
+        "thoi_gian": "1770"
+      },
+      "rights": "Di sản văn hóa quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Chùa Hương (cửa động Hương Tích)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Động Hương Tích, xã Hương Sơn, huyện Mỹ Đức",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn khắc trên vách đá cửa động Hương Tích",
+      "so_dang_ky": "HN-CHUA-004",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Khu di tích và thắng cảnh Hương Sơn",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, giáo dục",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "南天第一洞",
+      "phien_am": {
+        "noi_dung": "Nam thiên đệ nhất động",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Động đẹp bậc nhất dưới trời Nam.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Bút tích nổi tiếng của chúa Trịnh Sâm khắc tháng Ba năm Canh Dần (1770), ca ngợi vẻ đẹp kỳ vĩ của động Hương Tích.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán, tác giả và niên đại 1770.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Chùa",
+      "ten_di_tich": "Quần thể di tích thắng cảnh Hương Sơn (Chùa Hương)",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản và niên đại 1770 của bút tích Nam thiên đệ nhất động",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-CHUA-005",
+      "title": "Câu đối Pháp luân tự địa đông tây chuyển tại Chùa Quán Sứ",
+      "ten_goi_khac": "Câu đối Đại sư Thái Hư tặng Chùa Quán Sứ",
+      "creator": "Đại sư Thái Hư (tặng năm 1940 khi thăm Hội Phật giáo Bắc Kỳ)",
+      "subject": [
+        "Câu đối",
+        "Chùa Quán Sứ",
+        "Phật giáo",
+        "Hoàn Kiếm"
+      ],
+      "description": "Cặp câu đối chữ Hán 14 chữ tại Chùa Quán Sứ do Đại sư Thái Hư đề tặng năm 1940 nhân chuyến viếng thăm Hội Phật giáo Bắc Kỳ.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Tư liệu lịch sử Chùa Quán Sứ",
+        "Giáo hội Phật giáo Việt Nam"
+      ],
+      "date": "Năm 1940",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-07"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Hoàn Kiếm",
+        "don_vi_hanh_chinh_lich_su": "Thôn Quán Sứ, tổng Tiền Nghiêm, huyện Thọ Xương, phủ Hoài Đức",
+        "phuong_xa_hien_nay": "Phường Trần Hưng Đạo",
+        "phuong_xa_lich_su": "Tổng Tiền Nghiêm",
+        "thon_lang": "Phố Quán Sứ",
+        "thoi_gian": "1940"
+      },
+      "rights": "Tư liệu văn hóa đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Chùa Quán Sứ",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Số 73 phố Quán Sứ, Hà Nội",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại Chùa Quán Sứ",
+      "so_dang_ky": "HN-CHUA-005",
+      "nguoi_cho_phep_cong_bo": "Tư liệu công bố công khai về lịch sử Chùa Quán Sứ",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "法輪似地東西轉 ／ 佛道逢源左右通",
+      "phien_am": {
+        "noi_dung": "Pháp luân tự địa đông tây chuyển / Phật đạo phùng nguyên tả hữu thông",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Bánh xe pháp như mặt đất xoay chuyển khắp đông tây / Đạo Phật gặp nguồn suối trong, hai bên trái phải đều thông suốt.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Thể hiện tinh thần chấn hưng và giao lưu Phật giáo quốc tế tại Chùa Quán Sứ vào năm 1940.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu tác giả Đại sư Thái Hư và năm 1940.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Chùa",
+      "ten_di_tich": "Chùa Quán Sứ",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối và niên đại 1940 tại Chùa Quán Sứ",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DEN-001",
+      "title": "Hoành phi Vạn thế sư biểu tại Văn Miếu – Quốc Tử Giám",
+      "ten_goi_khac": "Hoành phi chính giữa Điện Đại Thành",
+      "creator": "Triều đình phong kiến tôn vinh Khổng Tử tại Văn Miếu Thăng Long",
+      "subject": [
+        "Hoành phi",
+        "Văn Miếu - Quốc Tử Giám",
+        "Nho học",
+        "Đống Đa"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán sơn son thếp vàng treo ở vị trí cao nhất chính giữa Thượng điện (Điện Đại Thành) tại Văn Miếu – Quốc Tử Giám, tôn vinh Khổng Tử là bậc thầy của muôn đời.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Trung tâm Hoạt động VHKH Văn Miếu – Quốc Tử Giám"
+      ],
+      "date": "Chưa xác định năm treo nguyên thủy (bảo tồn tại Điện Đại Thành thời Lê – Nguyễn)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-02",
+        "NGUON-08"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Đống Đa",
+        "don_vi_hanh_chinh_lich_su": "Phường Minh Giám, huyện Thọ Xương, phủ Hoài Đức",
+        "phuong_xa_hien_nay": "Phường Văn Miếu – Quốc Tử Giám",
+        "phuong_xa_lich_su": "Phường Minh Giám",
+        "thon_lang": "Phố Quốc Tử Giám",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Văn Miếu – Quốc Tử Giám (Điện Đại Thành)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Số 58 phố Quốc Tử Giám, Hà Nội",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại Điện Đại Thành",
+      "so_dang_ky": "HN-DEN-001",
+      "nguoi_cho_phep_cong_bo": "Trung tâm Hoạt động VHKH Văn Miếu – Quốc Tử Giám",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, giáo dục",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "萬世師表",
+      "phien_am": {
+        "noi_dung": "Vạn thế sư biểu",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Bậc thầy mẫu mực của muôn đời.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Tôn vinh tư tưởng giáo dục và đạo lý tôn sư trọng đạo truyền thống tại trường đại học đầu tiên của Việt Nam.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Kiểm chứng từ hồ sơ tư liệu Hán Nôm Văn Miếu – Quốc Tử Giám.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Miếu",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Văn Miếu – Quốc Tử Giám",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Biên mục và kiểm chứng hoành phi Vạn thế sư biểu",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DEN-002",
+      "title": "Hoành phi Đãng Ma Thiên Tôn tại Đền Quán Thánh",
+      "ten_goi_khac": "Hoành phi tôn hiệu Huyền Thiên Trấn Vũ",
+      "creator": "Ban thờ và tín chúng Đền Quán Thánh",
+      "subject": [
+        "Hoành phi",
+        "Đền Quán Thánh",
+        "Thăng Long Tứ Trấn",
+        "Ba Đình"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán tại Đền Quán Thánh (Trấn Vũ Quán – Bắc trấn kinh thành Thăng Long), xưng tụng tôn hiệu của Huyền Thiên Trấn Vũ.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Danh thắng Hà Nội",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm tạo tác cụ thể (thuộc di tích cổ thời Lê – Nguyễn)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-01"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DEN-003",
+        "HN-DEN-005"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Ba Đình",
+        "don_vi_hanh_chinh_lich_su": "Phường Thụy Chương, huyện Vĩnh Thuận, phủ Hoài Đức",
+        "phuong_xa_hien_nay": "Phường Quán Thánh",
+        "phuong_xa_lich_su": "Phường Thụy Chương",
+        "thon_lang": "Phố Quán Thánh – Đường Thanh Niên",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đền Quán Thánh (Trấn Vũ Quán)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đền Quán Thánh, phường Quán Thánh, quận Ba Đình",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại Đền Quán Thánh",
+      "so_dang_ky": "HN-DEN-002",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Đền Quán Thánh",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "蕩魔天尊",
+      "phien_am": {
+        "noi_dung": "Đãng Ma Thiên Tôn",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Vị thiên tôn có công đức diệt trừ ma quái, tà ma.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Thể hiện tín ngưỡng thờ Huyền Thiên Trấn Vũ trấn giữ phương Bắc kinh thành Thăng Long.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Kiểm chứng nguyên văn từ hồ sơ Hán Nôm Đền Quán Thánh.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đền",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đền Quán Thánh",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản Đãng Ma Thiên Tôn tại Đền Quán Thánh",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DEN-003",
+      "title": "Hoành phi Thừa hưu vô dịch tại Đền Bạch Mã",
+      "ten_goi_khac": "Đại tự cung tiến năm Canh Thìn (1880)",
+      "creator": "Cung tiến tại Đền Bạch Mã năm Canh Thìn (1880)",
+      "subject": [
+        "Hoành phi",
+        "Đền Bạch Mã",
+        "Thăng Long Tứ Trấn",
+        "Hoàn Kiếm"
+      ],
+      "description": "Bức đại tự chữ Hán 'Thừa hưu vô dịch' tại Đền Bạch Mã (Đông trấn Thăng Long, thờ thần Long Đỗ – Bạch Mã Đại Vương), cung tiến năm Canh Thìn (1880) triều vua Tự Đức.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Danh thắng Hà Nội",
+        "Tư liệu Hán Nôm Đền Bạch Mã"
+      ],
+      "date": "Năm Canh Thìn (1880), triều Tự Đức",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-01"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DEN-002",
+        "HN-DEN-005"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Hoàn Kiếm",
+        "don_vi_hanh_chinh_lich_su": "Phường Hà Khẩu, tổng Hữu Túc, huyện Thọ Xương, phủ Hoài Đức",
+        "phuong_xa_hien_nay": "Phường Hàng Buồm",
+        "phuong_xa_lich_su": "Phường Hà Khẩu",
+        "thon_lang": "Số 76 phố Hàng Buồm",
+        "thoi_gian": "1880"
+      },
+      "rights": "Di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đền Bạch Mã",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Số 76 phố Hàng Buồm, Hà Nội",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại Đền Bạch Mã",
+      "so_dang_ky": "HN-DEN-003",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Phố cổ và Di tích Đền Bạch Mã",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "承休無斁",
+      "phien_am": {
+        "noi_dung": "Thừa hưu vô dịch",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Nhận ơn phúc lớn lao đời đời không dứt.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Điển cố Kinh Thi (Thừa hưu vô dịch), ca ngợi ân đức bền lâu của thần Long Đỗ bảo hộ kinh thành Thăng Long.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán và niên đại Canh Thìn 1880.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đền",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đền Bạch Mã",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng hoành phi Thừa hưu vô dịch (1880) tại Đền Bạch Mã",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DEN-004",
+      "title": "Câu đối Bát đảo mặc ngân hồ thủy mãn tại Đền Ngọc Sơn",
+      "ten_goi_khac": "Câu đối vịnh Tháp Bút và Đài Nghiên Đền Ngọc Sơn",
+      "creator": "Danh sĩ Hà Nội thời Tự Đức (nhóm Thần Siêu Nguyễn Văn Siêu tu tạo)",
+      "subject": [
+        "Câu đối",
+        "Đền Ngọc Sơn",
+        "Hồ Hoàn Kiếm",
+        "Tháp Bút"
+      ],
+      "description": "Đôi câu đối 14 chữ Hán tại Đền Ngọc Sơn, ca ngợi cảnh sắc Tháp Bút và Đài Nghiên soi bóng xuống mặt nước Hồ Gươm.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Ban Quản lý Di tích Danh thắng Hà Nội",
+        "Hồ sơ di tích Đền Ngọc Sơn"
+      ],
+      "date": "Thế kỷ XIX (gắn với đợt tu tạo thời Tự Đức, 1865)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-01"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Hoàn Kiếm",
+        "don_vi_hanh_chinh_lich_su": "Huyện Thọ Xương, phủ Hoài Đức, tỉnh Hà Nội",
+        "phuong_xa_hien_nay": "Phường Hàng Trống",
+        "phuong_xa_lich_su": "Hồ Hoàn Kiếm (Lục Thủy)",
+        "thon_lang": "Đảo Ngọc, phố Đinh Tiên Hoàng",
+        "thoi_gian": "1865"
+      },
+      "rights": "Di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đền Ngọc Sơn",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đảo Ngọc, Hồ Hoàn Kiếm, Hà Nội",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại Đền Ngọc Sơn",
+      "so_dang_ky": "HN-DEN-004",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Danh thắng Hà Nội",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "潑島墨痕湖水滿 ／ 擎天筆勢石峰高",
+      "phien_am": {
+        "noi_dung": "Bát đảo mặc ngân hồ thủy mãn / Kình thiên bút thế thạch phong cao",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Tràn quanh đảo đầy hồ vết mực / Giơ lên trời thế bút ngất cao.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Vịnh cụm kiến trúc Tháp Bút – Đài Nghiên – Cầu Thê Húc – Đền Ngọc Sơn được dựng sửa năm 1865.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán, phiên âm và bối cảnh lịch sử tu tạo năm 1865.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đền",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đền Ngọc Sơn",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối Đền Ngọc Sơn",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-DEN-005",
+      "title": "Câu đối Mộc biểu chi sơ nhất chính dụ tán trung hưng thành tại Đền Voi Phục",
+      "ten_goi_khac": "Câu đối nhà Đại bái Đền Voi Phục",
+      "creator": "Cộng đồng địa phương và văn nhân tôn vinh Linh Lang Đại Vương",
+      "subject": [
+        "Câu đối",
+        "Đền Voi Phục",
+        "Thăng Long Tứ Trấn",
+        "Linh Lang",
+        "Ba Đình"
+      ],
+      "description": "Đôi câu đối 22 chữ tại nhà Đại bái Đền Voi Phục (Tây trấn kinh thành Thăng Long), ca ngợi công lao phò trợ triều Lý – Trần của Hoàng tử Linh Lang Đại Vương.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Tạp chí Người Hà Nội",
+        "Ban Quản lý Di tích Đền Voi Phục"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (gắn với câu đối cổ nhà Đại bái Đền Voi Phục)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-01"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-DEN-002",
+        "HN-DEN-003"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Ba Đình",
+        "don_vi_hanh_chinh_lich_su": "Trại Thủ Lệ, tổng Nội, huyện Vĩnh Thuận, phủ Hoài Đức",
+        "phuong_xa_hien_nay": "Phường Ngọc Khánh",
+        "phuong_xa_lich_su": "Làng Thủ Lệ",
+        "thon_lang": "Số 362 phố Kim Mã",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Di tích Quốc gia đặc biệt đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Đền Voi Phục (Tây Trấn từ)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Đền Voi Phục, Thủ Lệ, phường Ngọc Khánh, quận Ba Đình",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn lưu giữ tại nhà Đại bái Đền Voi Phục",
+      "so_dang_ky": "HN-DEN-005",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Đền Voi Phục",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "木標之初一政豫贊中興城 ／ 東阿遺後萬古褒封上等神",
+      "phien_am": {
+        "noi_dung": "Mộc biểu chi sơ, nhất chính dụ tán trung hưng thành / Đông A di hậu, vạn cổ bao phong thượng đẳng thần",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Thời Lý buổi đầu, một lần ra tay giúp việc trung hưng kinh thành / Thời Trần về sau, muôn đời tôn phong bậc thượng đẳng thần.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "'Mộc biểu' chỉ triều Lý (họ Lý chiết tự), 'Đông A' chỉ triều Trần; ca ngợi công đức hiển linh phù trợ hai triều đại của Linh Lang Đại Vương.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán, phiên âm và dịch nghĩa từ hồ sơ Đền Voi Phục.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Đền",
+      "ten_di_tich": "Di tích Quốc gia đặc biệt Đền Voi Phục",
+      "dong_ho_lien_quan": "",
+      "gia_dinh_lien_quan": "",
+      "nha_tho_ho": "",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối nhà Đại bái Đền Voi Phục",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-NTH-001",
+      "title": "Hoành phi Thiết thạch tinh trung tại Nhà thờ họ Đỗ Thế Giai",
+      "ten_goi_khac": "Hoành phi chúa Trịnh Doanh ban tặng Đỗ Thế Giai",
+      "creator": "Chúa Trịnh Doanh (ban tặng thời Lê Trung hưng)",
+      "subject": [
+        "Hoành phi",
+        "Nhà thờ họ Đỗ",
+        "Đỗ Thế Giai",
+        "Đông Ngạc",
+        "Bắc Từ Liêm"
+      ],
+      "description": "Bức hoành phi bốn chữ Hán 'Thiết thạch tinh trung' treo tại gian tiền tế Nhà thờ họ Đỗ (thờ danh thần Đỗ Thế Giai) ở làng cổ Đông Ngạc, ca ngợi tấm lòng trung kiên sắt đá.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Tư liệu di sản làng Đông Ngạc",
+        "Hội đồng gia tộc họ Đỗ Đông Ngạc"
+      ],
+      "date": "Thế kỷ XVIII (thời Lê Trung hưng, triều Lê – Trịnh)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-06"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-NTH-002"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Bắc Từ Liêm",
+        "don_vi_hanh_chinh_lich_su": "Huyện Từ Liêm, phủ Hoài Đức, tỉnh Hà Đông",
+        "phuong_xa_hien_nay": "Phường Đông Ngạc",
+        "phuong_xa_lich_su": "Làng Đông Ngạc (làng Vẽ)",
+        "thon_lang": "Đông Ngạc",
+        "thoi_gian": "Thế kỷ XVIII"
+      },
+      "rights": "Tư liệu di sản văn hóa đã công bố rộng rãi; chia sẻ phục vụ tra cứu, nghiên cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Nhà thờ họ Đỗ (Đỗ Thế Giai), Đông Ngạc",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Làng Đông Ngạc, phường Đông Ngạc, quận Bắc Từ Liêm",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại gian tiền tế nhà thờ họ Đỗ",
+      "so_dang_ky": "HN-NTH-001",
+      "nguoi_cho_phep_cong_bo": "Tư liệu đã công bố phục vụ nghiên cứu văn hóa dòng họ Đông Ngạc",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "da_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "鐵石精忠",
+      "phien_am": {
+        "noi_dung": "Thiết thạch tinh trung",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Lòng trung thành, tinh khiết, bền vững như sắt và đá.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Ân tứ của chúa Trịnh Doanh dành cho Đỗ Thế Giai (1709–1766); nhà thờ họ Đỗ hiện còn lưu giữ bia đá năm 1771 ghi nhận công trạng.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu văn bản, nhân vật lịch sử Đỗ Thế Giai và địa danh Đông Ngạc.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Nhà thờ họ",
+      "ten_di_tich": "Nhà thờ họ Đỗ Thế Giai (Đông Ngạc)",
+      "dong_ho_lien_quan": "Họ Đỗ",
+      "gia_dinh_lien_quan": "Chi tộc Đỗ Thế Giai",
+      "nha_tho_ho": "Nhà thờ họ Đỗ (Đông Ngạc)",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng văn bản Thiết thạch tinh trung và bối cảnh lịch sử thế kỷ XVIII",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-NTH-002",
+      "title": "Hoành phi Phan tộc đại từ đường tại Nhà thờ họ Phan Đông Ngạc",
+      "ten_goi_khac": "Hoành phi chính giữa hậu cung Nhà thờ họ Phan",
+      "creator": "Dòng họ Phan làng Đông Ngạc",
+      "subject": [
+        "Hoành phi",
+        "Nhà thờ họ Phan",
+        "Phan Phu Tiên",
+        "Đông Ngạc",
+        "Bắc Từ Liêm"
+      ],
+      "description": "Bức hoành phi năm chữ Hán treo chính giữa hậu cung Nhà thờ họ Phan tại làng khoa bảng Đông Ngạc, nơi phụng thờ nhà sử học, tiến sĩ khai khoa Phan Phu Tiên.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Tư liệu di sản làng Đông Ngạc",
+        "Dòng họ Phan Đông Ngạc"
+      ],
+      "date": "Chưa xác định năm tạo tác cụ thể (thuộc nhà thờ cổ tại Đông Ngạc)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-06"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-NTH-001"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Quận Bắc Từ Liêm",
+        "don_vi_hanh_chinh_lich_su": "Huyện Từ Liêm, phủ Hoài Đức, tỉnh Hà Đông",
+        "phuong_xa_hien_nay": "Phường Đông Ngạc",
+        "phuong_xa_lich_su": "Làng Đông Ngạc (làng Vẽ)",
+        "thon_lang": "Đông Ngạc",
+        "thoi_gian": "Truyền thống thời Lê – Nguyễn"
+      },
+      "rights": "Tư liệu văn hóa dòng họ đã công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Nhà thờ họ Phan (Đông Ngạc)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Làng Đông Ngạc, phường Đông Ngạc, quận Bắc Từ Liêm",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại gian hậu cung nhà thờ họ Phan",
+      "so_dang_ky": "HN-NTH-002",
+      "nguoi_cho_phep_cong_bo": "Tư liệu đã công bố phục vụ nghiên cứu lịch sử – văn hóa Đông Ngạc",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ tra cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "潘族大祠堂",
+      "phien_am": {
+        "noi_dung": "Phan tộc đại từ đường",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Từ đường lớn của dòng họ Phan.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Khẳng định vai trò đại từ đường của dòng họ có công khai khoa tiến sĩ đầu tiên ở làng Vẽ (Phan Phu Tiên, đỗ Thái học sinh năm 1396).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu văn bản từ tư liệu nghiên cứu làng cổ Đông Ngạc.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Nhà thờ họ",
+      "ten_di_tich": "Nhà thờ họ Phan (Đông Ngạc)",
+      "dong_ho_lien_quan": "Họ Phan",
+      "gia_dinh_lien_quan": "Chi tộc Phan Phu Tiên",
+      "nha_tho_ho": "Nhà thờ họ Phan (Đông Ngạc)",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Biên mục hoành phi Phan tộc đại từ đường tại Đông Ngạc",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-NTH-003",
+      "title": "Đại tự Phan Bình Chương Từ tại Nhà thờ họ Phan Huy Sài Sơn",
+      "ten_goi_khac": "Biển đề trung tâm Nhà thờ họ Phan Huy",
+      "creator": "Dòng họ Phan Huy chi Sài Sơn",
+      "subject": [
+        "Hoành phi",
+        "Nhà thờ họ Phan Huy",
+        "Phan Huy Cẩn",
+        "Phan Huy Chú",
+        "Quốc Oai"
+      ],
+      "description": "Bức đại tự bốn chữ Hán chạm khắc ở ô chính giữa mặt tiền lòng nhà Nhà thờ họ Phan Huy (xã Sài Sơn), tôn vinh thủy tổ Phan Huy Cẩn (đỗ Hội nguyên, giữ chức Bình Chương Sự) và truyền thống văn hiến của dòng họ.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Di tích Nhà thờ họ Phan Huy Sài Sơn",
+        "Hội Nhà văn / Tư liệu văn hóa Quốc Oai"
+      ],
+      "date": "Khoảng cuối thế kỷ XVIII – đầu thế kỷ XIX (di tích nhà thờ gần 200 năm tuổi)",
+      "type": "Hoành phi",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-07"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-CHUA-003"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Quốc Oai",
+        "don_vi_hanh_chinh_lich_su": "Huyện Yên Sơn, phủ Quốc Oai, trấn Sơn Tây",
+        "phuong_xa_hien_nay": "Xã Sài Sơn",
+        "phuong_xa_lich_su": "Làng Thụy Khuê, xã Sài Sơn",
+        "thon_lang": "Thụy Khuê, Sài Sơn",
+        "thoi_gian": "Cuối thế kỷ XVIII – đầu thế kỷ XIX"
+      },
+      "rights": "Di tích lịch sử văn hóa đã xếp hạng và công bố; chia sẻ phục vụ tra cứu phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Nhà thờ họ Phan Huy (Sài Sơn)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Xã Sài Sơn, huyện Quốc Oai, Hà Nội",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Còn nguyên vẹn tại trung tâm mặt tiền lòng nhà từ đường",
+      "so_dang_ky": "HN-NTH-003",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích Lịch sử Văn hóa Nhà thờ họ Phan Huy Sài Sơn",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu, giáo dục",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "潘平章祠",
+      "phien_am": {
+        "noi_dung": "Phan Bình Chương Từ",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Từ đường thờ quan Bình Chương họ Phan (cụ Phan Huy Cẩn).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Gắn với dòng họ khoa bảng Phan Huy (Phan Huy Cẩn, Phan Huy Ích, Phan Huy Thực, Phan Huy Vịnh, nhà bác học Phan Huy Chú).",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán và gia thế lịch sử dòng họ Phan Huy chi Sài Sơn.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Nhà thờ họ",
+      "ten_di_tich": "Di tích Lịch sử Văn hóa Nhà thờ họ Phan Huy",
+      "dong_ho_lien_quan": "Họ Phan Huy",
+      "gia_dinh_lien_quan": "Chi họ Phan Huy tại Sài Sơn",
+      "nha_tho_ho": "Nhà thờ họ Phan Huy (Sài Sơn)",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng đại tự Phan Bình Chương Từ tại Nhà thờ họ Phan Huy",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-NTH-004",
+      "title": "Câu đối Công tề Lam nhạc thiên phong trĩ tại Từ đường Nguyễn Trãi (Nhị Khê)",
+      "ten_goi_khac": "Câu đối nhà thờ Ức Trai tướng công ở Nhị Khê",
+      "creator": "Văn nhân đời sau kính tặng tại Từ đường Nguyễn Trãi Nhị Khê",
+      "subject": [
+        "Câu đối",
+        "Từ đường Nguyễn Trãi",
+        "Nhị Khê",
+        "Họ Nguyễn",
+        "Thường Tín"
+      ],
+      "description": "Đôi câu đối 14 chữ Hán tại không gian thờ tự Nguyễn Trãi ở làng Nhị Khê, ví công nghiệp khai quốc của ông cao sừng sững như ngàn ngọn núi Lam Sơn và phúc trạch dòng họ bền lâu như dải sông Tô.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Khu di tích lưu niệm Nguyễn Trãi – Nhị Khê",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (lưu truyền tại từ đường thờ Nguyễn Trãi ở Nhị Khê)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-03"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-NTH-005"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Thường Tín",
+        "don_vi_hanh_chinh_lich_su": "Tổng Thượng Cung, huyện Thượng Phúc, phủ Thường Tín, trấn Sơn Nam Thượng",
+        "phuong_xa_hien_nay": "Xã Nhị Khê",
+        "phuong_xa_lich_su": "Làng Nhị Khê",
+        "thon_lang": "Nhị Khê",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Di tích lịch sử văn hóa đã công bố; chia sẻ phục vụ tra cứu, giáo dục phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Từ đường / Nhà thờ Nguyễn Trãi (Nhị Khê)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Làng Nhị Khê, xã Nhị Khê, huyện Thường Tín",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Lưu giữ trong hệ thống văn khắc thờ Nguyễn Trãi tại Nhị Khê",
+      "so_dang_ky": "HN-NTH-004",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích lưu niệm Nguyễn Trãi – Nhị Khê",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "功齊藍岳千峰峙 ／ 慶共蘇江一帶流",
+      "phien_am": {
+        "noi_dung": "Công tề Lam nhạc thiên phong trĩ / Khánh cộng Tô giang nhất đái lưu",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Công nghiệp sánh ngang núi Lam ngàn ngọn cao sừng sững / Phúc trạch cùng dòng sông Tô một dải chảy dài.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "'Lam nhạc' chỉ núi Lam Sơn (khởi nghĩa Lam Sơn); 'Tô giang' chỉ sông Tô Lịch gắn với quê hương Nhị Khê của Anh hùng dân tộc Nguyễn Trãi.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu chữ Hán và phiên âm chuẩn tại nhà thờ Nguyễn Trãi Nhị Khê.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Từ đường",
+      "ten_di_tich": "Khu lưu niệm & Từ đường Nguyễn Trãi (Nhị Khê)",
+      "dong_ho_lien_quan": "Họ Nguyễn",
+      "gia_dinh_lien_quan": "Dòng họ Nguyễn Ức Trai (Nhị Khê)",
+      "nha_tho_ho": "Từ đường Nguyễn Trãi (Nhị Khê)",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối Công tề Lam nhạc tại Từ đường Nguyễn Trãi",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    },
+    {
+      "identifier": "HN-NTH-005",
+      "title": "Câu đối Sự nghiệp văn chương khai quốc thủ tại Từ đường Nguyễn Trãi (Nhị Khê)",
+      "ten_goi_khac": "Câu đối ca ngợi công nghiệp và gia thanh họ Nguyễn Nhị Khê",
+      "creator": "Văn nhân đời sau soạn tiến cúng tại Từ đường Nguyễn Trãi Nhị Khê",
+      "subject": [
+        "Câu đối",
+        "Từ đường Nguyễn Trãi",
+        "Nhị Khê",
+        "Họ Nguyễn",
+        "Thường Tín"
+      ],
+      "description": "Đôi câu đối 14 chữ Hán tôn vinh sự nghiệp văn chương đứng đầu hàng khai quốc và thanh danh gia tộc vững bền như lời thề sông núi của Ức Trai Nguyễn Trãi.",
+      "publisher": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+      "contributor": [
+        "Khu di tích lưu niệm Nguyễn Trãi – Nhị Khê",
+        "Viện Nghiên cứu Hán Nôm"
+      ],
+      "date": "Chưa xác định năm khắc cụ thể (lưu truyền tại từ đường thờ Nguyễn Trãi ở Nhị Khê)",
+      "type": "Câu đối",
+      "format": "Văn bản Hán Nôm đã kiểm chứng (không kèm ảnh)",
+      "source": [
+        "NGUON-03"
+      ],
+      "language": "Chữ Hán, Tiếng Việt",
+      "relation": [
+        "HN-NTH-004"
+      ],
+      "coverage": {
+        "thanh_pho": "Hà Nội",
+        "don_vi_hanh_chinh_hien_nay": "Huyện Thường Tín",
+        "don_vi_hanh_chinh_lich_su": "Tổng Thượng Cung, huyện Thượng Phúc, phủ Thường Tín, trấn Sơn Nam Thượng",
+        "phuong_xa_hien_nay": "Xã Nhị Khê",
+        "phuong_xa_lich_su": "Làng Nhị Khê",
+        "thon_lang": "Nhị Khê",
+        "thoi_gian": "Thời Lê – Nguyễn"
+      },
+      "rights": "Di tích lịch sử văn hóa đã công bố; chia sẻ phục vụ tra cứu, giáo dục phi lợi nhuận",
+      "noi_luu_giu_hien_nay": "Từ đường / Nhà thờ Nguyễn Trãi (Nhị Khê)",
+      "noi_luu_giu_tai_thoi_diem_tu_lieu": "Làng Nhị Khê, xã Nhị Khê, huyện Thường Tín",
+      "loai_ban_dang_hien_thi": "Bản phiên âm",
+      "tinh_trang_ban_goc": "Lưu giữ trong hệ thống văn khắc thờ Nguyễn Trãi tại Nhị Khê",
+      "so_dang_ky": "HN-NTH-005",
+      "nguoi_cho_phep_cong_bo": "Ban Quản lý Di tích lưu niệm Nguyễn Trãi – Nhị Khê",
+      "pham_vi_duoc_phep": "Công khai văn bản Hán Nôm, phiên âm và dịch nghĩa phục vụ nghiên cứu phi lợi nhuận",
+      "phan_khong_cong_bo": "",
+      "muc_kiem_chung": "da_kiem_chung",
+      "trang_thai_xu_ly": "DA_CONG_KHAI",
+      "kiem_chung_chi_tiet": {
+        "dia_diem": "da_kiem_chung",
+        "nguon_tu_lieu": "da_kiem_chung",
+        "chu_han_nom": "da_kiem_chung",
+        "phien_am": "da_kiem_chung",
+        "dich_nghia": "da_kiem_chung",
+        "nien_dai": "chua_kiem_chung"
+      },
+      "images": [],
+      "chu_han_nom": "事業文章開國首 ／ 襟常帶礪固家聲",
+      "phien_am": {
+        "noi_dung": "Sự nghiệp văn chương khai quốc thủ / Cân thường đái lệ cố gia thanh",
+        "trang_thai": "da_kiem_chung"
+      },
+      "dich_nghia": {
+        "noi_dung": "Sự nghiệp và văn chương đứng đầu hàng khai quốc / Áo xiêm, đai ngọc thề non nước làm bền vững thanh danh dòng họ.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "giai_thich_noi_dung": {
+        "noi_dung": "Điển cố 'Đới hà lệ sơn' (sông cạn đá mòn) dùng chỉ lời thề phong thưởng công thần khai quốc bền vững ngàn đời.",
+        "trang_thai": "da_kiem_chung"
+      },
+      "ghi_chu": "Đã đối chiếu nguyên văn Hán tự và phiên âm chuẩn.",
+      "ngay_cap_nhat": "2026-11-18",
+      "ngay_tiep_nhan": "2026-11-18",
+      "loai_dia_diem_luu_giu": "Từ đường",
+      "ten_di_tich": "Khu lưu niệm & Từ đường Nguyễn Trãi (Nhị Khê)",
+      "dong_ho_lien_quan": "Họ Nguyễn",
+      "gia_dinh_lien_quan": "Dòng họ Nguyễn Ức Trai (Nhị Khê)",
+      "nha_tho_ho": "Từ đường Nguyễn Trãi (Nhị Khê)",
+      "cong_khai_nguoi_cung_cap": true,
+      "lich_su_chinh_sua": [
+        {
+          "ngay": "2026-11-18",
+          "noi_dung": "Kiểm chứng nguyên văn câu đối Sự nghiệp văn chương tại Từ đường Nguyễn Trãi",
+          "nguoi_thuc_hien": "Ban biên tập tư liệu"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "ma_nguon": "NGUON-01",
+      "ten_nguon": "Hồ sơ kiểm kê di tích – Ban Quản lý Di tích Danh thắng Hà Nội",
+      "loai_nguon": "Hồ sơ di tích",
+      "tac_gia_hoac_nguoi_cung_cap": "Ban Quản lý Di tích Danh thắng Hà Nội (Sở Văn hóa và Thể thao Thành phố Hà Nội)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Ban Quản lý Di tích Danh thắng Hà Nội – Số 90 phố Thợ Nhuộm, quận Hoàn Kiếm, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 90 phố Thợ Nhuộm, quận Hoàn Kiếm, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Bộ phận nghiên cứu tư liệu di tích – BQL Di tích Danh thắng Hà Nội",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Hồ sơ xếp hạng di tích Quốc gia đặc biệt Đền Ngọc Sơn và cụm di tích Thăng Long Tứ Trấn (Đền Quán Thánh, Đền Bạch Mã, Đền Voi Phục)",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-DEN-002",
+        "HN-DEN-003",
+        "HN-DEN-004",
+        "HN-DEN-005"
+      ],
+      "ghi_chu": "Cơ quan quản lý di tích công lập trực thuộc Sở Văn hóa và Thể thao Hà Nội, lưu giữ hồ sơ lý lịch di tích và tư liệu văn khắc tại các di tích trọng điểm nội thành."
+    },
+    {
+      "ma_nguon": "NGUON-02",
+      "ten_nguon": "Tư liệu Hán Nôm – Trung tâm Hoạt động Văn hóa Khoa học Văn Miếu – Quốc Tử Giám",
+      "loai_nguon": "Tư liệu của Ban quản lý",
+      "tac_gia_hoac_nguoi_cung_cap": "Trung tâm Hoạt động Văn hóa Khoa học Văn Miếu – Quốc Tử Giám (Sở Văn hóa và Thể thao Hà Nội)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Trung tâm Hoạt động Văn hóa Khoa học Văn Miếu – Quốc Tử Giám – Số 58 phố Quốc Tử Giám, quận Đống Đa, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 58 phố Quốc Tử Giám, quận Đống Đa, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Phòng Nghiên cứu Sưu tầm – Trung tâm Hoạt động VHKH Văn Miếu – Quốc Tử Giám",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Hồ sơ Di tích Quốc gia đặc biệt Văn Miếu – Quốc Tử Giám và tư liệu văn khắc Điện Đại Thành",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-DEN-001"
+      ],
+      "ghi_chu": "Đơn vị sự nghiệp công lập trực tiếp quản lý, nghiên cứu và công bố hệ thống văn bia, hoành phi, câu đối tại Văn Miếu – Quốc Tử Giám."
+    },
+    {
+      "ma_nguon": "NGUON-03",
+      "ten_nguon": "Kho tư liệu văn khắc – Viện Nghiên cứu Hán Nôm",
+      "loai_nguon": "Tài liệu Hán Nôm",
+      "tac_gia_hoac_nguoi_cung_cap": "Viện Nghiên cứu Hán Nôm (Viện Hàn lâm Khoa học xã hội Việt Nam)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Viện Nghiên cứu Hán Nôm – Số 183 đường Đặng Tiến Đông, quận Đống Đa, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 183 đường Đặng Tiến Đông, quận Đống Đa, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Cơ sở dữ liệu nghiên cứu của Viện Nghiên cứu Hán Nôm",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Tổng tập thác bản văn khắc Hán Nôm Việt Nam (Viện Nghiên cứu Hán Nôm) & Tư liệu văn khắc Hán Nôm khu vực Hà Nội",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-CHUA-001",
+        "HN-CHUA-002",
+        "HN-CHUA-004",
+        "HN-NTH-004",
+        "HN-NTH-005"
+      ],
+      "ghi_chu": "Viện nghiên cứu chuyên ngành hàng đầu cả nước về lưu giữ thác bản văn bia, chuông đồng, hoành phi, câu đối chữ Hán và chữ Nôm."
+    },
+    {
+      "ma_nguon": "NGUON-04",
+      "ten_nguon": "Hồ sơ di sản Cổ Loa – Trung tâm Bảo tồn Di sản Thăng Long – Hà Nội",
+      "loai_nguon": "Hồ sơ di tích",
+      "tac_gia_hoac_nguoi_cung_cap": "Trung tâm Bảo tồn Di sản Thăng Long – Hà Nội (UBND Thành phố Hà Nội)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Trung tâm Bảo tồn Di sản Thăng Long – Hà Nội – Số 12 đường Nguyễn Tri Phương, quận Ba Đình, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 12 đường Nguyễn Tri Phương, quận Ba Đình & Khu di tích Cổ Loa, huyện Đông Anh, Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Bộ phận nghiên cứu di sản Cổ Loa – Trung tâm Bảo tồn Di sản Thăng Long – Hà Nội",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Hồ sơ Di tích Quốc gia đặc biệt Cổ Loa và hệ thống văn khắc Hán Nôm Đình Ngự Triều Di Quy",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-DINH-001",
+        "HN-DINH-002"
+      ],
+      "ghi_chu": "Đơn vị sự nghiệp công lập trực thuộc UBND Thành phố Hà Nội, trực tiếp quản lý Khu di sản Hoàng thành Thăng Long và Khu di tích Quốc gia đặc biệt Cổ Loa."
+    },
+    {
+      "ma_nguon": "NGUON-05",
+      "ten_nguon": "Hồ sơ quản lý di tích cấp Thành phố – Sở Văn hóa và Thể thao Thành phố Hà Nội",
+      "loai_nguon": "Tài liệu lưu trữ",
+      "tac_gia_hoac_nguoi_cung_cap": "Sở Văn hóa và Thể thao Thành phố Hà Nội",
+      "don_vi_hoac_ca_nhan_luu_giu": "Sở Văn hóa và Thể thao Thành phố Hà Nội – Số 47 phố Hàng Dầu, quận Hoàn Kiếm, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 47 phố Hàng Dầu, quận Hoàn Kiếm, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Phòng Quản lý Di sản Văn hóa – Sở Văn hóa và Thể thao Hà Nội",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Danh mục kiểm kê và hồ sơ khoa học di tích Làng cổ Đường Lâm (Sơn Tây), Đình Chèm (Bắc Từ Liêm), Chùa Thầy (Quốc Oai)",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-DINH-003",
+        "HN-DINH-004",
+        "HN-DINH-005",
+        "HN-CHUA-003"
+      ],
+      "ghi_chu": "Cơ quan chuyên môn thuộc UBND Thành phố Hà Nội thực hiện quản lý nhà nước đối với hệ thống di tích và di sản văn hóa trên toàn địa bàn Thủ đô."
+    },
+    {
+      "ma_nguon": "NGUON-06",
+      "ten_nguon": "Tư liệu sưu tầm & trưng bày di sản Thăng Long – Bảo tàng Hà Nội",
+      "loai_nguon": "Tư liệu của Ban quản lý",
+      "tac_gia_hoac_nguoi_cung_cap": "Bảo tàng Hà Nội (Sở Văn hóa và Thể thao Thành phố Hà Nội)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Bảo tàng Hà Nội – Đường Phạm Hùng, phường Mễ Trì, quận Nam Từ Liêm, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Đường Phạm Hùng, phường Mễ Trì, quận Nam Từ Liêm, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Phòng Nghiên cứu Sưu tầm – Bảo tàng Hà Nội",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Tư liệu nghiên cứu, trưng bày hiện vật đồ thờ, hoành phi, câu đối và văn hóa làng khoa bảng Đông Ngạc tại Bảo tàng Hà Nội",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-NTH-001",
+        "HN-NTH-002"
+      ],
+      "ghi_chu": "Bảo tàng công lập cấp Thành phố lưu giữ và nghiên cứu hiện vật, tư liệu văn hóa – lịch sử Thăng Long – Hà Nội qua các thời kỳ."
+    },
+    {
+      "ma_nguon": "NGUON-07",
+      "ten_nguon": "Tư liệu nghiên cứu lịch sử, văn hóa – Bảo tàng Lịch sử Quốc gia",
+      "loai_nguon": "Sách nghiên cứu",
+      "tac_gia_hoac_nguoi_cung_cap": "Bảo tàng Lịch sử Quốc gia (Bộ Văn hóa, Thể thao và Du lịch)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Bảo tàng Lịch sử Quốc gia – Số 1 phố Tràng Tiền, quận Hoàn Kiếm, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 1 phố Tràng Tiền, quận Hoàn Kiếm, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Phòng Nghiên cứu Sưu tầm – Bảo tàng Lịch sử Quốc gia",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Tài liệu nghiên cứu di sản văn hóa thời Lê – Nguyễn, tư liệu dòng họ Phan Huy (Sài Sơn) và lịch sử Phật giáo cận đại tại Chùa Quán Sứ",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-CHUA-005",
+        "HN-NTH-003"
+      ],
+      "ghi_chu": "Bảo tàng đầu hệ quốc gia trực thuộc Bộ Văn hóa, Thể thao và Du lịch, lưu trữ tư liệu lịch sử và di sản Hán Nôm tiêu biểu."
+    },
+    {
+      "ma_nguon": "NGUON-08",
+      "ten_nguon": "Hồ sơ khảo sát kiến trúc & di tích cổ truyền – Viện Bảo tồn Di tích",
+      "loai_nguon": "Hồ sơ di tích",
+      "tac_gia_hoac_nguoi_cung_cap": "Viện Bảo tồn Di tích (Bộ Văn hóa, Thể thao và Du lịch)",
+      "don_vi_hoac_ca_nhan_luu_giu": "Viện Bảo tồn Di tích – Số 489 đường Nguyễn Trãi, Hà Nội",
+      "cong_khai_nguoi_cung_cap": true,
+      "dia_diem": "Số 489 đường Nguyễn Trãi, Thành phố Hà Nội",
+      "ngay_tiep_nhan": "2026-11-18",
+      "nguoi_chup_anh": "",
+      "nguoi_phien_am": "Bộ phận khảo sát, tu bổ di tích – Viện Bảo tồn Di tích",
+      "nguoi_kiem_chung": "Ban biên tập Hồ sơ số Hà Nội",
+      "tai_lieu_tham_khao": "Hồ sơ nghiên cứu bảo tồn kiến trúc truyền thống và cấu kiện chữ viết tại Đình Mông Phụ, Chùa Thầy và Văn Miếu – Quốc Tử Giám",
+      "tinh_trang_xac_minh": "da_kiem_chung",
+      "ho_so_lien_quan": [
+        "HN-DINH-003",
+        "HN-CHUA-003",
+        "HN-DEN-001"
+      ],
+      "ghi_chu": "Viện nghiên cứu khoa học công lập trực thuộc Bộ Văn hóa, Thể thao và Du lịch chuyên về khảo sát, bảo tồn và tu bổ di tích lịch sử – văn hóa."
+    }
+  ]
 }

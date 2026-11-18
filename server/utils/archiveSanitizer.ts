@@ -2,13 +2,14 @@ import type {
   ArchiveImageRaw,
   ArchiveRecordRaw,
   ArchiveSource,
+  GranularVerification,
   PublicImage,
   PublicRecord,
   VerificationLevel,
 } from '../../src/types/archive.ts';
 
 export const IMAGE_RESTRICTION_MESSAGE =
-  'Hình ảnh tư liệu đang chờ xác nhận quyền công bố. Vui lòng liên hệ Ban quản lý hoặc người cung cấp tư liệu.';
+  'Tư liệu đang chờ xác nhận quyền công bố. Vui lòng quay lại sau.';
 
 export function normalizeVietnamese(value: string | undefined | null): string {
   if (!value) return '';
@@ -32,6 +33,19 @@ export function normalizeVerification(
     return status;
   }
   return 'chua_kiem_chung';
+}
+
+export function normalizeGranularVerification(
+  input?: Partial<GranularVerification>
+): GranularVerification {
+  return {
+    dia_diem: normalizeVerification(input?.dia_diem),
+    nguon_tu_lieu: normalizeVerification(input?.nguon_tu_lieu),
+    chu_han_nom: normalizeVerification(input?.chu_han_nom),
+    phien_am: normalizeVerification(input?.phien_am),
+    dich_nghia: normalizeVerification(input?.dich_nghia),
+    nien_dai: normalizeVerification(input?.nien_dai),
+  };
 }
 
 export function hasRecordPublicationAuthority(
@@ -61,6 +75,9 @@ export function isImagePublicationAllowed(
 }
 
 export function isRecordPubliclyExportable(record: ArchiveRecordRaw): boolean {
+  if (record.trang_thai_xu_ly && record.trang_thai_xu_ly !== 'DA_CONG_KHAI') {
+    return false;
+  }
   const scope = normalizeVietnamese(record.pham_vi_duoc_phep);
   const rights = normalizeVietnamese(record.rights);
   if (scope === 'khong cong bo' || scope === 'khong_cong_bo') return false;
@@ -96,13 +113,15 @@ export function sanitizeRecordForPublic(
   return {
     identifier: record.identifier || '',
     title: record.title || '',
+    ten_goi_khac: record.ten_goi_khac || '',
     creator: record.creator || '',
     subject: Array.isArray(record.subject) ? record.subject : [],
     description: record.description || '',
     publisher: record.publisher || '',
-    contributor: canShowProvider && Array.isArray(record.contributor)
-      ? record.contributor
-      : [],
+    contributor:
+      canShowProvider && Array.isArray(record.contributor)
+        ? record.contributor
+        : [],
     date: record.date || '',
     type: record.type || '',
     format: record.format || '',
@@ -131,6 +150,10 @@ export function sanitizeRecordForPublic(
     pham_vi_duoc_phep: record.pham_vi_duoc_phep || '',
     co_phan_khong_cong_bo: Boolean((record.phan_khong_cong_bo || '').trim()),
     muc_kiem_chung: normalizeVerification(record.muc_kiem_chung),
+    kiem_chung_chi_tiet: record.kiem_chung_chi_tiet
+      ? normalizeGranularVerification(record.kiem_chung_chi_tiet)
+      : undefined,
+    trang_thai_xu_ly: record.trang_thai_xu_ly || 'DA_CONG_KHAI',
     chu_han_nom: record.chu_han_nom || '',
     phien_am: {
       noi_dung: record.phien_am?.noi_dung || '',
@@ -169,7 +192,11 @@ export function sanitizeRecordForPublic(
       : [],
     image_publication_allowed: allowedImages.length > 0,
     image_restriction_reason:
-      allowedImages.length > 0 ? '' : IMAGE_RESTRICTION_MESSAGE,
+      allowedImages.length > 0
+        ? ''
+        : rawImages.length > 0 || !recordAllowsImages
+          ? IMAGE_RESTRICTION_MESSAGE
+          : 'Hồ sơ văn bản đã kiểm chứng (chưa đính kèm hình ảnh tư liệu).',
     images: allowedImages,
   };
 }
@@ -183,9 +210,14 @@ export function sanitizeSourceForPublic(source: ArchiveSource): ArchiveSource {
     tac_gia_hoac_nguoi_cung_cap: canShowPerson
       ? source.tac_gia_hoac_nguoi_cung_cap || ''
       : 'Ẩn theo quy định bảo vệ thông tin cá nhân',
+    don_vi_hoac_ca_nhan_luu_giu: source.don_vi_hoac_ca_nhan_luu_giu || '',
     cong_khai_nguoi_cung_cap: canShowPerson,
     dia_diem: source.dia_diem || '',
     ngay_tiep_nhan: source.ngay_tiep_nhan || '',
+    nguoi_chup_anh: canShowPerson ? source.nguoi_chup_anh || '' : '',
+    nguoi_phien_am: source.nguoi_phien_am || '',
+    nguoi_kiem_chung: source.nguoi_kiem_chung || '',
+    tai_lieu_tham_khao: source.tai_lieu_tham_khao || '',
     tinh_trang_xac_minh: normalizeVerification(source.tinh_trang_xac_minh),
     ho_so_lien_quan: Array.isArray(source.ho_so_lien_quan)
       ? source.ho_so_lien_quan

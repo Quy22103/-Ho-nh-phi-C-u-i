@@ -1,17 +1,27 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
+import sharp from 'sharp';
 import { serverConfig } from '../config/env.ts';
 import type {
+  ArchiveImageRaw,
   ArchiveRecordRaw,
   ArchiveSource,
   ArchiveStats,
   CitizenSubmissionInput,
   FilterQuery,
+  GranularVerification,
+  PendingImageItem,
+  ProcessingStatus,
   PublicRecord,
+  SubmissionRecord,
   TulieuDataset,
+  VerificationLevel,
 } from '../../src/types/archive.ts';
 import {
+  hasRecordPublicationAuthority,
   isRecordPubliclyExportable,
+  normalizeGranularVerification,
   normalizeVerification,
   normalizeVietnamese,
   sanitizeRecordForPublic,
@@ -47,6 +57,62 @@ export async function readDataset(): Promise<TulieuDataset> {
   }
 }
 
+export async function writeDataset(dataset: TulieuDataset): Promise<void> {
+  await fs.mkdir(path.dirname(serverConfig.dataFilePath), { recursive: true });
+  await fs.writeFile(
+    serverConfig.dataFilePath,
+    JSON.stringify(dataset, null, 2),
+    'utf8'
+  );
+}
+
+export async function readSubmissions(): Promise<SubmissionRecord[]> {
+  try {
+    const raw = await fs.readFile(serverConfig.submissionsFilePath, 'utf8');
+    const parsed = JSON.parse(raw) as { submissions?: SubmissionRecord[] };
+    return Array.isArray(parsed.submissions) ? parsed.submissions : [];
+  } catch (err: unknown) {
+    if ((err as NodeJS.ErrnoException)?.code === 'ENOENT') {
+      return [];
+    }
+    throw err;
+  }
+}
+
+export async function writeSubmissions(
+  submissions: SubmissionRecord[]
+): Promise<void> {
+  await fs.mkdir(path.dirname(serverConfig.submissionsFilePath), {
+    recursive: true,
+  });
+  await fs.writeFile(
+    serverConfig.submissionsFilePath,
+    JSON.stringify({ submissions }, null, 2),
+    'utf8'
+  );
+}
+
+export async function createReducedDisplayImage(
+  srcPath: string,
+  destThumbPath: string
+): Promise<void> {
+  await fs.mkdir(path.dirname(destThumbPath), { recursive: true });
+  try {
+    await sharp(srcPath)
+      .rotate()
+      .resize({
+        width: 1280,
+        height: 1280,
+        fit: 'inside',
+        withoutEnlargement: true,
+      })
+      .toFile(destThumbPath);
+  } catch {
+    // Safe fallback if input buffer is tiny or unsupported variant
+    await fs.copyFile(srcPath, destThumbPath);
+  }
+}
+
 export function computeStats(dataset: TulieuDataset): ArchiveStats {
   const publicRecords = dataset.records.filter(isRecordPubliclyExportable);
   let hoanhPhiCount = 0;
@@ -55,6 +121,8 @@ export function computeStats(dataset: TulieuDataset): ArchiveStats {
   let unverifiedCount = 0;
   let illegibleCount = 0;
   const locationSet = new Set<string>();
+  const clanSet = new Set<string>();
+  const siteSet = new Set<string>();
 
   for (const r of publicRecords) {
     const t = normalizeVietnamese(r.type);
@@ -68,17 +136,35 @@ export function computeStats(dataset: TulieuDataset): ArchiveStats {
 
     const loc = (r.noi_luu_giu_hien_nay || '').trim();
     if (loc) locationSet.add(normalizeVietnamese(loc));
+
+    const clan = (r.dong_ho_lien_quan || '').trim();
+    if (clan) clanSet.add(normalizeVietnamese(clan));
+
+    const site = (r.ten_di_tich || r.nha_tho_ho || r.noi_luu_giu_hien_nay || '').trim();
+    if (site) siteSet.add(normalizeVietnamese(site));
   }
+
+  const recentRecords = [...publicRecords]
+    .sort((a, b) =>
+      (b.ngay_cap_nhat || b.ngay_tiep_nhan || '').localeCompare(
+        a.ngay_cap_nhat || a.ngay_tiep_nhan || ''
+      )
+    )
+    .slice(0, 4)
+    .map(sanitizeRecordForPublic);
 
   return {
     tong_ho_so: publicRecords.length,
     so_hoanh_phi: hoanhPhiCount,
     so_cau_doi: cauDoiCount,
     so_dia_diem_luu_giu: locationSet.size,
+    so_dong_ho: clanSet.size,
+    so_di_tich: siteSet.size,
     so_da_kiem_chung: verifiedCount,
     so_chua_kiem_chung: unverifiedCount,
     so_chua_doc_duoc: illegibleCount,
     so_nguon_tu_lieu: dataset.sources.length,
+    recent_records: recentRecords,
   };
 }
 
@@ -101,6 +187,7 @@ export function filterPublicRecords(
   const xaHienNaySet = new Set<string>();
   const xaLichSuSet = new Set<string>();
   const thonLangSet = new Set<string>();
+  const repoSet = new Set<string>();
 
   for (const r of publicRaw) {
     if (r.coverage?.don_vi_hanh_chinh_lich_su) {
@@ -115,6 +202,9 @@ export function filterPublicRecords(
     if (r.coverage?.thon_lang) {
       thonLangSet.add(r.coverage.thon_lang);
     }
+    if (r.noi_luu_giu_hien_nay) {
+      repoSet.add(r.noi_luu_giu_hien_nay);
+    }
   }
 
   const filtered = publicRaw.filter((r) => {
@@ -123,6 +213,7 @@ export function filterPublicRecords(
       const searchableFields = [
         r.identifier,
         r.title,
+        r.ten_goi_khac,
         r.chu_han_nom,
         r.phien_am?.noi_dung,
         r.dich_nghia?.noi_dung,
@@ -254,27 +345,50 @@ export function filterPublicRecords(
     }
 
     if (query.condition && query.condition.trim()) {
-      if (!matchesText(r.tinh_trang_ban_goc, query.condition)) {
+      if (!matchesText(r.tinh_trang_ban_goc, query.condition)) return false;
+    }
+
+    if (query.currentRepository && query.currentRepository.trim()) {
+      if (!matchesText(r.noi_luu_giu_hien_nay, query.currentRepository))
         return false;
-      }
     }
 
     return true;
   });
 
+  const sortMode = query.sort || 'newest';
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortMode === 'title_asc') {
+      return (a.title || '').localeCompare(b.title || '', 'vi');
+    }
+    if (sortMode === 'identifier_asc') {
+      return (a.identifier || '').localeCompare(b.identifier || '', 'vi');
+    }
+    if (sortMode === 'verified_first') {
+      const rank = (s: VerificationLevel | string | undefined) =>
+        s === 'da_kiem_chung' ? 0 : s === 'chua_kiem_chung' ? 1 : 2;
+      const diff = rank(a.muc_kiem_chung) - rank(b.muc_kiem_chung);
+      if (diff !== 0) return diff;
+    }
+    return (b.ngay_cap_nhat || b.ngay_tiep_nhan || '').localeCompare(
+      a.ngay_cap_nhat || a.ngay_tiep_nhan || ''
+    );
+  });
+
   const page = Math.max(1, Number(query.page) || 1);
   const limit = Math.min(100, Math.max(1, Number(query.limit) || 12));
   const start = (page - 1) * limit;
-  const paged = filtered.slice(start, start + limit).map(sanitizeRecordForPublic);
+  const paged = sorted.slice(start, start + limit).map(sanitizeRecordForPublic);
 
   return {
     items: paged,
-    total: filtered.length,
+    total: sorted.length,
     facets: {
       huyenLichSu: Array.from(huyenSet).sort(),
       xaHienNay: Array.from(xaHienNaySet).sort(),
       xaLichSu: Array.from(xaLichSuSet).sort(),
       thonLang: Array.from(thonLangSet).sort(),
+      repositories: Array.from(repoSet).sort(),
     },
   };
 }
@@ -294,37 +408,341 @@ export function getPublicSources(dataset: TulieuDataset): ArchiveSource[] {
   });
 }
 
-export async function saveSubmission(input: CitizenSubmissionInput): Promise<{
+function generateTrackingCode(): string {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  const rand = crypto.randomBytes(2).toString('hex').toUpperCase();
+  return `TN-${y}${m}${d}-${rand}`;
+}
+
+export async function saveSubmission(
+  input: CitizenSubmissionInput,
+  pendingImages: PendingImageItem[]
+): Promise<{
   id: string;
   ngay_gui: string;
+  trang_thai_xu_ly: ProcessingStatus;
 }> {
-  const dir = path.dirname(serverConfig.submissionsFilePath);
-  await fs.mkdir(dir, { recursive: true });
+  const submissions = await readSubmissions();
+  const nowIso = new Date().toISOString();
+  const submissionId = generateTrackingCode();
 
-  let current: { submissions: unknown[] } = { submissions: [] };
-  try {
-    const raw = await fs.readFile(serverConfig.submissionsFilePath, 'utf8');
-    const parsed = JSON.parse(raw) as { submissions?: unknown[] };
-    if (Array.isArray(parsed.submissions)) {
-      current = { submissions: parsed.submissions };
+  const entry: SubmissionRecord = {
+    submission_id: submissionId,
+    ngay_gui: nowIso,
+    ngay_cap_nhat: nowIso,
+    trang_thai_xu_ly: 'PENDING',
+    loai_dong_gop:
+      input.loai_dong_gop === 'bo_sung_chinh_sua'
+        ? 'bo_sung_chinh_sua'
+        : 'ho_so_moi',
+    target_identifier: input.target_identifier || undefined,
+    ten_tu_lieu: input.ten_tu_lieu,
+    ten_goi_khac: '',
+    loai_tu_lieu: input.loai_tu_lieu || 'Hoành phi',
+    creator: '',
+    subject: input.loai_tu_lieu ? [input.loai_tu_lieu] : [],
+    description: input.ghi_chu || '',
+    publisher: 'Hồ sơ số Hoành phi – Câu đối Hà Nội',
+    format: '',
+    language: 'Chữ Hán/Nôm, Tiếng Việt',
+    relation: [],
+    rights: input.pham_vi_su_dung || '',
+    noi_luu_giu: input.noi_luu_giu,
+    noi_luu_giu_tai_thoi_diem_tu_lieu: input.noi_luu_giu,
+    loai_dia_diem: input.loai_dia_diem || 'Khác',
+    ten_di_tich: '',
+    nha_tho_ho: '',
+    dia_danh_hien_nay: input.dia_danh_hien_nay || '',
+    phuong_xa_hien_nay: '',
+    dia_danh_lich_su: input.dia_danh_lich_su || '',
+    phuong_xa_lich_su: '',
+    thon_lang: input.thon_lang || '',
+    dong_ho_hoac_gia_dinh: input.dong_ho_hoac_gia_dinh || '',
+    gia_dinh_lien_quan: '',
+    loai_ban_dang_hien_thi:
+      pendingImages.length > 0 ? 'Ảnh bản gốc' : 'Bản phiên âm',
+    tinh_trang_ban_goc: 'Không xác định',
+    so_dang_ky: submissionId,
+    chu_han_nom: input.chu_han_nom || '',
+    phien_am_de_xuat: input.phien_am_de_xuat || '',
+    dich_nghia_de_xuat: input.dich_nghia_de_xuat || '',
+    giai_thich_noi_dung: '',
+    nien_dai_de_xuat: input.nien_dai_de_xuat || '',
+    nguoi_cung_cap: input.nguoi_cung_cap,
+    cong_khai_nguoi_cung_cap: false,
+    lien_he: input.lien_he || '',
+    nguon_xac_minh: input.nguon_xac_minh,
+    nguon_anh: input.nguon_anh || '',
+    nguoi_cho_phep_cong_bo: input.nguoi_cho_phep_cong_bo || '',
+    pham_vi_su_dung: input.pham_vi_su_dung || '',
+    phan_khong_cong_bo: '',
+    xac_nhan_quyen_cong_bo: Boolean(input.xac_nhan_quyen_cong_bo),
+    ghi_chu: input.ghi_chu || '',
+    muc_kiem_chung: 'chua_kiem_chung',
+    kiem_chung_chi_tiet: normalizeGranularVerification(),
+    pending_images: pendingImages,
+    lich_su_duyet: [],
+  };
+
+  submissions.unshift(entry);
+  await writeSubmissions(submissions);
+
+  return {
+    id: entry.submission_id,
+    ngay_gui: entry.ngay_gui,
+    trang_thai_xu_ly: entry.trang_thai_xu_ly,
+  };
+}
+
+export async function promoteSubmissionToOfficialRecord(
+  submission: SubmissionRecord,
+  reviewerName: string,
+  overallVerification: VerificationLevel,
+  granular: GranularVerification
+): Promise<string> {
+  const dataset = await readDataset();
+  const todayStr = new Date().toISOString().slice(0, 10);
+
+  let targetIdx = -1;
+  let identifier = submission.official_identifier || '';
+
+  if (submission.target_identifier) {
+    targetIdx = dataset.records.findIndex(
+      (r) => r.identifier === submission.target_identifier
+    );
+    if (targetIdx >= 0) {
+      identifier = dataset.records[targetIdx].identifier;
     }
-  } catch {
-    current = { submissions: [] };
   }
 
-  const entry = {
-    submission_id: `DG-${Date.now()}`,
-    ngay_gui: new Date().toISOString(),
-    trang_thai: 'cho_ban_quan_ly_xem_xet',
-    ...input,
+  if (!identifier) {
+    identifier = `HN-${submission.submission_id.replace(/^TN-/, '')}`;
+  }
+  if (targetIdx < 0) {
+    targetIdx = dataset.records.findIndex((r) => r.identifier === identifier);
+  }
+
+  // Move/copy pending images into private official storage/images/
+  // Image permission stays 'cho_xac_nhan' unless reviewer/admin explicitly approved & authority is complete
+  const promotedImages: ArchiveImageRaw[] =
+    targetIdx >= 0 && Array.isArray(dataset.records[targetIdx].images)
+      ? [...dataset.records[targetIdx].images]
+      : [];
+
+  await fs.mkdir(path.join(serverConfig.imagesDir, 'originals'), {
+    recursive: true,
+  });
+  await fs.mkdir(path.join(serverConfig.imagesDir, 'thumbnails'), {
+    recursive: true,
+  });
+
+  const normalizedScope = normalizeVietnamese(submission.pham_vi_su_dung);
+  const baseAuthorityValid =
+    Boolean(submission.nguoi_cho_phep_cong_bo?.trim()) &&
+    Boolean(submission.pham_vi_su_dung?.trim()) &&
+    normalizedScope !== 'khong cong bo' &&
+    normalizedScope !== 'khong_cong_bo' &&
+    normalizedScope !== 'noi bo' &&
+    submission.xac_nhan_quyen_cong_bo === true;
+
+  for (const pImg of submission.pending_images) {
+    if (promotedImages.some((existing) => existing.image_id === pImg.image_id)) {
+      const existing = promotedImages.find((e) => e.image_id === pImg.image_id)!;
+      existing.caption = pImg.caption;
+      existing.source = pImg.source;
+      existing.image_type = pImg.image_type;
+      existing.permission =
+        baseAuthorityValid && pImg.permission === 'duoc_phep_cong_bo'
+          ? 'duoc_phep_cong_bo'
+          : pImg.permission === 'khong_cong_bo'
+            ? 'khong_cong_bo'
+            : 'cho_xac_nhan';
+      continue;
+    }
+
+    const srcFile = path.resolve(
+      serverConfig.pendingImagesDir,
+      path.basename(pImg.filename)
+    );
+    const destOrigRel = `originals/${path.basename(pImg.filename)}`;
+    const destThumbRel = `thumbnails/${path.basename(pImg.filename)}`;
+
+    try {
+      await fs.copyFile(
+        srcFile,
+        path.resolve(serverConfig.imagesDir, destOrigRel)
+      );
+      await createReducedDisplayImage(
+        srcFile,
+        path.resolve(serverConfig.imagesDir, destThumbRel)
+      );
+    } catch {
+      continue;
+    }
+
+    promotedImages.push({
+      image_id: pImg.image_id,
+      file: destOrigRel,
+      thumbnail: destThumbRel,
+      image_type: pImg.image_type || 'toan_trang',
+      caption: pImg.caption || submission.ten_tu_lieu,
+      source: pImg.source || submission.nguon_anh || submission.nguon_xac_minh,
+      permission:
+        baseAuthorityValid && pImg.permission === 'duoc_phep_cong_bo'
+          ? 'duoc_phep_cong_bo'
+          : pImg.permission === 'khong_cong_bo'
+            ? 'khong_cong_bo'
+            : 'cho_xac_nhan',
+    });
+  }
+
+  const existingRecord = targetIdx >= 0 ? dataset.records[targetIdx] : undefined;
+
+  const updatedRecord: ArchiveRecordRaw = {
+    identifier,
+    title: submission.ten_tu_lieu,
+    ten_goi_khac: submission.ten_goi_khac || existingRecord?.ten_goi_khac || '',
+    creator: submission.creator || existingRecord?.creator || '',
+    subject:
+      Array.isArray(submission.subject) && submission.subject.length > 0
+        ? submission.subject
+        : existingRecord?.subject || [submission.loai_tu_lieu],
+    description:
+      submission.description ||
+      existingRecord?.description ||
+      submission.ghi_chu ||
+      '',
+    publisher:
+      submission.publisher ||
+      existingRecord?.publisher ||
+      'Hồ sơ số Hoành phi – Câu đối Hà Nội',
+    contributor: submission.cong_khai_nguoi_cung_cap
+      ? [submission.nguoi_cung_cap]
+      : existingRecord?.contributor || [],
+    date: submission.nien_dai_de_xuat || existingRecord?.date || '',
+    type: submission.loai_tu_lieu || existingRecord?.type || '',
+    format: submission.format || existingRecord?.format || '',
+    source: submission.nguon_xac_minh
+      ? [submission.nguon_xac_minh]
+      : existingRecord?.source || [],
+    language:
+      submission.language ||
+      existingRecord?.language ||
+      'Chữ Hán/Nôm, Tiếng Việt',
+    relation:
+      Array.isArray(submission.relation) && submission.relation.length > 0
+        ? submission.relation
+        : existingRecord?.relation || [],
+    coverage: {
+      thanh_pho: existingRecord?.coverage?.thanh_pho || 'Hà Nội',
+      don_vi_hanh_chinh_hien_nay:
+        submission.dia_danh_hien_nay ||
+        existingRecord?.coverage?.don_vi_hanh_chinh_hien_nay ||
+        '',
+      don_vi_hanh_chinh_lich_su:
+        submission.dia_danh_lich_su ||
+        existingRecord?.coverage?.don_vi_hanh_chinh_lich_su ||
+        '',
+      phuong_xa_hien_nay:
+        submission.phuong_xa_hien_nay ||
+        existingRecord?.coverage?.phuong_xa_hien_nay ||
+        '',
+      phuong_xa_lich_su:
+        submission.phuong_xa_lich_su ||
+        existingRecord?.coverage?.phuong_xa_lich_su ||
+        '',
+      thon_lang:
+        submission.thon_lang || existingRecord?.coverage?.thon_lang || '',
+      thoi_gian:
+        submission.nien_dai_de_xuat || existingRecord?.coverage?.thoi_gian || '',
+    },
+    rights:
+      submission.rights ||
+      submission.pham_vi_su_dung ||
+      existingRecord?.rights ||
+      '',
+    noi_luu_giu_hien_nay: submission.noi_luu_giu,
+    noi_luu_giu_tai_thoi_diem_tu_lieu:
+      submission.noi_luu_giu_tai_thoi_diem_tu_lieu ||
+      existingRecord?.noi_luu_giu_tai_thoi_diem_tu_lieu ||
+      submission.noi_luu_giu,
+    loai_ban_dang_hien_thi:
+      submission.loai_ban_dang_hien_thi ||
+      existingRecord?.loai_ban_dang_hien_thi ||
+      (promotedImages.length > 0 ? 'Ảnh bản gốc' : 'Bản phiên âm'),
+    tinh_trang_ban_goc:
+      submission.tinh_trang_ban_goc ||
+      existingRecord?.tinh_trang_ban_goc ||
+      'Không xác định',
+    so_dang_ky:
+      submission.so_dang_ky ||
+      existingRecord?.so_dang_ky ||
+      submission.submission_id,
+    nguoi_cho_phep_cong_bo: submission.nguoi_cho_phep_cong_bo || '',
+    pham_vi_duoc_phep: submission.pham_vi_su_dung || '',
+    phan_khong_cong_bo:
+      submission.phan_khong_cong_bo || existingRecord?.phan_khong_cong_bo || '',
+    muc_kiem_chung: overallVerification,
+    trang_thai_xu_ly: submission.trang_thai_xu_ly,
+    kiem_chung_chi_tiet: granular,
+    images: promotedImages,
+    chu_han_nom: submission.chu_han_nom || '',
+    phien_am: {
+      noi_dung: submission.phien_am_de_xuat || '',
+      trang_thai: granular.phien_am,
+    },
+    dich_nghia: {
+      noi_dung: submission.dich_nghia_de_xuat || '',
+      trang_thai: granular.dich_nghia,
+    },
+    giai_thich_noi_dung: submission.giai_thich_noi_dung
+      ? {
+          noi_dung: submission.giai_thich_noi_dung,
+          trang_thai: overallVerification,
+        }
+      : existingRecord?.giai_thich_noi_dung,
+    ghi_chu:
+      submission.ghi_chu_kiem_duyet ||
+      submission.ghi_chu ||
+      existingRecord?.ghi_chu ||
+      '',
+    ngay_cap_nhat: todayStr,
+    loai_dia_diem_luu_giu: submission.loai_dia_diem,
+    ten_di_tich: submission.ten_di_tich || existingRecord?.ten_di_tich || '',
+    nha_tho_ho: submission.nha_tho_ho || existingRecord?.nha_tho_ho || '',
+    dong_ho_lien_quan: submission.dong_ho_hoac_gia_dinh,
+    gia_dinh_lien_quan:
+      submission.gia_dinh_lien_quan || existingRecord?.gia_dinh_lien_quan || '',
+    ngay_tiep_nhan: submission.ngay_gui.slice(0, 10),
+    cong_khai_nguoi_cung_cap: Boolean(submission.cong_khai_nguoi_cung_cap),
+    lich_su_chinh_sua: [
+      ...(existingRecord?.lich_su_chinh_sua || []),
+      {
+        ngay: todayStr,
+        noi_dung: `Cập nhật từ hồ sơ tiếp nhận ${submission.submission_id} (${submission.trang_thai_xu_ly})`,
+        nguoi_thuc_hien: reviewerName,
+      },
+    ],
   };
-  current.submissions.push(entry);
 
-  await fs.writeFile(
-    serverConfig.submissionsFilePath,
-    JSON.stringify(current, null, 2),
-    'utf8'
-  );
+  // Ensure record image authority check stays consistent
+  if (!hasRecordPublicationAuthority(updatedRecord)) {
+    updatedRecord.images = updatedRecord.images.map((im) => ({
+      ...im,
+      permission:
+        im.permission === 'khong_cong_bo' ? 'khong_cong_bo' : 'cho_xac_nhan',
+    }));
+  }
 
-  return { id: entry.submission_id, ngay_gui: entry.ngay_gui };
+  if (targetIdx >= 0) {
+    dataset.records[targetIdx] = updatedRecord;
+  } else {
+    dataset.records.unshift(updatedRecord);
+  }
+
+  await writeDataset(dataset);
+  return identifier;
 }

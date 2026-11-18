@@ -49,17 +49,20 @@ export function ArtifactImageViewer({
   const dragStartRef = useRef({ x: 0, y: 0, ox: 0, oy: 0 });
 
   if (!publicationAllowed || images.length === 0) {
+    const isTextOnlyNoImage = restrictionReason.includes('chưa đính kèm hình ảnh');
     return (
       <div className="border border-limestone bg-parchment/70 rounded-lg p-8 md:p-12 text-center">
         <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-ivory border border-limestone flex items-center justify-center text-bronze">
           <ShieldAlert className="w-6 h-6" aria-hidden="true" />
         </div>
         <h3 className="text-xl font-semibold text-walnut-deep mb-2">
-          Chưa đủ điều kiện công bố hình ảnh
+          {isTextOnlyNoImage
+            ? 'Hồ sơ văn bản (chưa đính kèm hình ảnh)'
+            : 'Chưa đủ điều kiện công bố hình ảnh'}
         </h3>
         <p className="text-base text-ink max-w-xl mx-auto leading-relaxed">
           {restrictionReason ||
-            'Hình ảnh tư liệu đang chờ xác nhận quyền công bố. Vui lòng liên hệ Ban quản lý hoặc người cung cấp tư liệu.'}
+            'Tư liệu đang chờ xác nhận quyền công bố. Vui lòng quay lại sau.'}
         </p>
       </div>
     );
@@ -228,6 +231,7 @@ export function ArtifactImageViewer({
             alt={activeImage.caption || title}
             referrerPolicy="no-referrer"
             draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
             onError={() => setLoadError(true)}
             style={{
               transform: `translate3d(${offset.x}px, ${offset.y}px, 0) scale(${zoom})`,

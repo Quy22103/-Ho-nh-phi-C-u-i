@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, BookOpen, Compass, Search } from 'lucide-react';
 import { fetchStats } from '../../api/client.ts';
+import { VerificationBadge } from '../../components/VerificationBadge.tsx';
 import type { ArchiveStats } from '../../types/archive.ts';
 
 const CATEGORIES = [
@@ -80,6 +81,8 @@ export function HomePage() {
     { label: 'Số lượng hoành phi', value: stats?.so_hoanh_phi ?? 0 },
     { label: 'Số lượng câu đối', value: stats?.so_cau_doi ?? 0 },
     { label: 'Số địa điểm lưu giữ', value: stats?.so_dia_diem_luu_giu ?? 0 },
+    { label: 'Số dòng họ', value: stats?.so_dong_ho ?? 0 },
+    { label: 'Số di tích', value: stats?.so_di_tich ?? 0 },
     { label: 'Hồ sơ đã kiểm chứng', value: stats?.so_da_kiem_chung ?? 0 },
     { label: 'Hồ sơ chưa kiểm chứng', value: stats?.so_chua_kiem_chung ?? 0 },
   ];
@@ -244,7 +247,7 @@ export function HomePage() {
             {error}
           </div>
         ) : loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {statCards.map((item) => (
               <div
                 key={item.label}
@@ -257,7 +260,7 @@ export function HomePage() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {statCards.map((item) => (
                 <div
                   key={item.label}
@@ -280,6 +283,84 @@ export function HomePage() {
             )}
           </>
         )}
+      </section>
+
+      {/* Tư liệu mới được bổ sung */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-limestone pb-4">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-walnut-deep">
+              Tư liệu mới được bổ sung
+            </h2>
+            <p className="text-sm text-muted mt-1">
+              Các hồ sơ đã được phê duyệt công khai gần nhất từ kho lưu trữ
+            </p>
+          </div>
+          <Link
+            to="/danh-sach"
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-walnut text-ivory rounded hover:bg-walnut-deep transition-colors whitespace-nowrap"
+          >
+            <span>Xem tất cả tư liệu</span>
+            <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+          </Link>
+        </div>
+
+        {!loading && (!stats?.recent_records || stats.recent_records.length === 0) ? (
+          <div className="border border-limestone bg-parchment/40 rounded-lg p-6 text-sm text-muted">
+            Chưa có tư liệu mới được công bố trong hệ thống.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {(stats?.recent_records || []).map((rec) => (
+              <Link
+                key={rec.identifier}
+                to={`/tu-lieu/${encodeURIComponent(rec.identifier)}`}
+                className="border border-limestone bg-ivory rounded-lg p-5 hover:border-bronze/70 hover:bg-parchment/40 transition-colors space-y-2.5"
+              >
+                <div className="flex items-center justify-between gap-2 text-xs">
+                  <span className="font-mono font-semibold text-bronze">
+                    {rec.identifier}
+                  </span>
+                  <VerificationBadge status={rec.muc_kiem_chung} />
+                </div>
+                <h3 className="text-lg font-semibold text-walnut-deep">
+                  {rec.title}
+                </h3>
+                {rec.chu_han_nom && (
+                  <p lang="zh-Hant" className="font-hannom text-lg text-ink tracking-wider">
+                    {rec.chu_han_nom}
+                  </p>
+                )}
+                <p className="text-xs text-muted">
+                  Nơi lưu giữ: {rec.noi_luu_giu_hien_nay || 'Chưa xác định'}
+                  {rec.dong_ho_lien_quan ? ` · Dòng họ: ${rec.dong_ho_lien_quan}` : ''}
+                </p>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* Giá trị văn hóa truyền thống */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="border border-limestone bg-parchment/50 rounded-lg p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-walnut-deep">
+              Về hoành phi và câu đối trong văn hóa Hà Nội
+            </h2>
+            <p className="text-sm text-ink/90 leading-relaxed">
+              Hoành phi và câu đối bằng chữ Hán, chữ Nôm là thành tố cốt lõi trong không gian kiến trúc tín ngưỡng và thờ tự gia tộc tại Thăng Long – Hà Nội. Mỗi bức đại tự hay vế đối lưu giữ triết lý giáo dục, gia phong dòng họ, lịch sử dựng làng và nghệ thuật thư pháp, chạm khắc cổ truyền.
+            </p>
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-xl font-semibold text-walnut-deep">
+              Ý nghĩa bảo tồn cộng đồng
+            </h2>
+            <p className="text-sm text-ink/90 leading-relaxed">
+              Hệ thống phục vụ Ban quản lý di tích, các dòng họ, người dân địa phương, con cháu xa quê và giới nghiên cứu tra cứu chính xác nguồn gốc hiện vật, phân tách rõ phần đã kiểm chứng với nội dung tham khảo chưa kiểm chứng.
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   );

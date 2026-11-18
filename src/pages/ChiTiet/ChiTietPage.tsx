@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
+  CheckCircle2,
   AlertTriangle,
   ArrowLeft,
   Check,
   Copy,
+  FileEdit,
+  Save,
   Sparkles,
 } from 'lucide-react';
 import {
+  fetchAuthSession,
   fetchRecordDetail,
   fetchSystemStatus,
   requestTranscriptionSuggestion,
+  updateAdminOfficialRecord,
 } from '../../api/client.ts';
 import { ArtifactImageViewer } from '../../components/ArtifactImageViewer.tsx';
+import { SubmissionModal } from '../../components/SubmissionModal.tsx';
 import { VerificationBadge } from '../../components/VerificationBadge.tsx';
 import type {
   ArchiveSource,
   PublicRecord,
   TranscriptionSuggestionResponse,
+  UserAccountSafe,
+  VerificationLevel,
 } from '../../types/archive.ts';
 
 function DetailRow({
@@ -54,9 +62,20 @@ export function ChiTietPage() {
   const [aiError, setAiError] = useState('');
   const [aiResult, setAiResult] =
     useState<TranscriptionSuggestionResponse | null>(null);
-  const [reviewerDraft, setReviewerDraft] = useState('');
+  const [hanNomDraft, setHanNomDraft] = useState('');
+  const [phienAmDraft, setPhienAmDraft] = useState('');
+  const [dichNghiaDraft, setDichNghiaDraft] = useState('');
   const [reviewerNotes, setReviewerNotes] = useState('');
   const [copied, setCopied] = useState(false);
+  const [editRequestOpen, setEditRequestOpen] = useState(false);
+
+  // Authenticated manager explicit save of Gemini proposal
+  const [authUser, setAuthUser] = useState<UserAccountSafe | null>(null);
+  const [saveVerification, setSaveVerification] =
+    useState<VerificationLevel>('chua_kiem_chung');
+  const [savingAi, setSavingAi] = useState(false);
+  const [saveAiNotice, setSaveAiNotice] = useState('');
+  const [saveAiError, setSaveAiError] = useState('');
 
   useEffect(() => {
     if (!identifier) return;
@@ -67,12 +86,18 @@ export function ChiTietPage() {
     Promise.all([
       fetchRecordDetail(identifier),
       fetchSystemStatus().catch(() => ({ ok: true, geminiConfigured: false })),
+      fetchAuthSession().catch(() => ({
+        authenticated: false,
+        needsInitialAdmin: false,
+        user: null,
+      })),
     ])
-      .then(([detailRes, statusRes]) => {
+      .then(([detailRes, statusRes, authRes]) => {
         if (!mounted) return;
         setRecord(detailRes.record);
         setLinkedSources(detailRes.linkedSources);
         setGeminiConfigured(statusRes.geminiConfigured);
+        setAuthUser(authRes.authenticated ? authRes.user : null);
         if (detailRes.record.images.length > 0) {
           setSelectedImageId(detailRes.record.images[0].image_id);
         }
@@ -95,6 +120,8 @@ export function ChiTietPage() {
     if (!record || !selectedImageId) return;
     setAiLoading(true);
     setAiError('');
+    setSaveAiNotice('');
+    setSaveAiError('');
     try {
       const res = await requestTranscriptionSuggestion(
         record.identifier,
@@ -104,7 +131,9 @@ export function ChiTietPage() {
         setAiError(res.error);
       } else {
         setAiResult(res);
-        setReviewerDraft(res.suggestion || '');
+        setHanNomDraft(res.han_nom_detected || '');
+        setPhienAmDraft(res.phien_am_de_xuat || res.suggestion || '');
+        setDichNghiaDraft(res.dich_nghia_tham_khao || '');
         setReviewerNotes(res.notes || '');
       }
     } catch (err: unknown) {
@@ -120,7 +149,12 @@ export function ChiTietPage() {
   };
 
   const handleCopyDraft = async () => {
-    const content = [reviewerDraft, reviewerNotes ? `Ghi chú: ${reviewerNotes}` : '']
+    const content = [
+      hanNomDraft ? `Chữ Hán/Nôm: ${hanNomDraft}` : '',
+      phienAmDraft ? `Phiên âm: ${phienAmDraft}` : '',
+      dichNghiaDraft ? `Dịch nghĩa: ${dichNghiaDraft}` : '',
+      reviewerNotes ? `Ghi chú: ${reviewerNotes}` : '',
+    ]
       .filter(Boolean)
       .join('\n\n');
     if (!content) return;
@@ -130,6 +164,40 @@ export function ChiTietPage() {
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Ignore clipboard failure
+    }
+  };
+
+  const handleSaveAiProposalToRecord = async () => {
+    if (!record || !authUser) return;
+    setSavingAi(true);
+    setSaveAiNotice('');
+    setSaveAiError('');
+    try {
+      await updateAdminOfficialRecord(record.identifier, {
+        chu_han_nom: hanNomDraft.trim() || record.chu_han_nom,
+        phien_am_noi_dung: phienAmDraft.trim() || record.phien_am.noi_dung,
+        dich_nghia_noi_dung:
+          dichNghiaDraft.trim() || record.dich_nghia.noi_dung,
+        phien_am_trang_thai: saveVerification,
+        dich_nghia_trang_thai: saveVerification,
+        ghi_chu_nghien_cuu: reviewerNotes.trim() || undefined,
+        ly_do:
+          'Người quản lý xác nhận và lưu nội dung đề xuất phiên âm/dịch nghĩa đã đối chiếu',
+      });
+      const refreshed = await fetchRecordDetail(record.identifier);
+      setRecord(refreshed.record);
+      setLinkedSources(refreshed.linkedSources);
+      setSaveAiNotice(
+        'Đã xác nhận và lưu nội dung chỉnh sửa vào hồ sơ chính thức.'
+      );
+    } catch (err: unknown) {
+      const msg = (err as { response?: { data?: { error?: string } } })
+        ?.response?.data?.error;
+      setSaveAiError(
+        msg || 'Không thể lưu đề xuất vào hồ sơ. Vui lòng kiểm tra quyền truy cập.'
+      );
+    } finally {
+      setSavingAi(false);
     }
   };
 
@@ -195,11 +263,19 @@ export function ChiTietPage() {
               {record.title}
             </h1>
           </div>
-          <div className="shrink-0">
+          <div className="shrink-0 flex flex-wrap items-center gap-2.5">
             <VerificationBadge
               status={record.muc_kiem_chung}
               prefix="Hồ sơ tổng thể"
             />
+            <button
+              type="button"
+              onClick={() => setEditRequestOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border border-bronze text-bronze bg-ivory rounded hover:bg-parchment transition-colors whitespace-nowrap"
+            >
+              <FileEdit className="w-3.5 h-3.5" />
+              <span>Đề nghị chỉnh sửa / bổ sung thông tin</span>
+            </button>
           </div>
         </div>
       </div>
@@ -372,7 +448,9 @@ export function ChiTietPage() {
 
             {!record.image_publication_allowed && (
               <p className="text-xs text-muted">
-                Chức năng này bị khóa do hình ảnh tư liệu chưa được xác nhận quyền công bố.
+                {record.image_restriction_reason.includes('chưa đính kèm hình ảnh')
+                  ? 'Chức năng phân tích ảnh bằng AI yêu cầu hồ sơ có hình ảnh tư liệu đã được phép công bố.'
+                  : 'Chức năng này bị khóa do hình ảnh tư liệu chưa được xác nhận quyền công bố.'}
               </p>
             )}
 
@@ -387,7 +465,7 @@ export function ChiTietPage() {
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold bg-amber-100 text-amber-950 border border-amber-300 rounded">
                     <AlertTriangle className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>{aiResult.label}</span>
+                    <span>{aiResult.label || 'Chưa kiểm – Nội dung do AI đề xuất'}</span>
                   </span>
                   <button
                     type="button"
@@ -408,30 +486,111 @@ export function ChiTietPage() {
                   </button>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-ink mb-1">
-                    Nội dung đề xuất (người kiểm tra có thể chỉnh sửa trực tiếp tại đây)
-                  </label>
-                  <textarea
-                    rows={5}
-                    value={reviewerDraft}
-                    onChange={(e) => setReviewerDraft(e.target.value)}
-                    className="w-full p-3 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
-                  />
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-xs font-semibold text-ink mb-1">
+                      Chữ Hán/Nôm đề xuất (có thể chỉnh sửa)
+                    </label>
+                    <input
+                      type="text"
+                      value={hanNomDraft}
+                      onChange={(e) => setHanNomDraft(e.target.value)}
+                      placeholder="Nhập hoặc hiệu chỉnh chữ Hán/Nôm..."
+                      className="w-full px-3 py-2 text-base font-hannom bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-ink mb-1">
+                      Phiên âm Hán Việt đề xuất (có thể chỉnh sửa)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={phienAmDraft}
+                      onChange={(e) => setPhienAmDraft(e.target.value)}
+                      className="w-full p-3 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-ink mb-1">
+                      Dịch nghĩa tham khảo (có thể chỉnh sửa)
+                    </label>
+                    <textarea
+                      rows={3}
+                      value={dichNghiaDraft}
+                      onChange={(e) => setDichNghiaDraft(e.target.value)}
+                      className="w-full p-3 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-ink mb-1">
+                      Ghi chú của người kiểm tra
+                    </label>
+                    <textarea
+                      rows={2}
+                      value={reviewerNotes}
+                      onChange={(e) => setReviewerNotes(e.target.value)}
+                      placeholder="Ghi chú đối chiếu thực địa, nét chữ mờ, dị thể..."
+                      className="w-full p-3 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-ink mb-1">
-                    Ghi chú của người kiểm tra
-                  </label>
-                  <textarea
-                    rows={2}
-                    value={reviewerNotes}
-                    onChange={(e) => setReviewerNotes(e.target.value)}
-                    placeholder="Ghi chú đối chiếu thực địa, nét chữ mờ, dị thể..."
-                    className="w-full p-3 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
-                  />
-                </div>
+                {authUser ? (
+                  <div className="pt-3 border-t border-limestone space-y-3">
+                    <p className="text-xs text-muted">
+                      Đăng nhập với vai trò{' '}
+                      <strong className="text-walnut-deep">{authUser.full_name} ({authUser.role})</strong>:
+                      Chỉ lưu khi bạn đã đối chiếu và nhấn xác nhận thủ công.
+                    </p>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <select
+                        value={saveVerification}
+                        onChange={(e) =>
+                          setSaveVerification(
+                            e.target.value as VerificationLevel
+                          )
+                        }
+                        className="px-3 py-2 text-xs bg-white border border-limestone rounded"
+                      >
+                        <option value="chua_kiem_chung">
+                          Lưu ở mức: Chưa kiểm chứng
+                        </option>
+                        <option value="da_kiem_chung">
+                          Lưu ở mức: Đã kiểm chứng
+                        </option>
+                      </select>
+                      <button
+                        type="button"
+                        disabled={savingAi}
+                        onClick={handleSaveAiProposalToRecord}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-walnut text-ivory rounded hover:bg-walnut-deep disabled:opacity-50"
+                      >
+                        <Save className="w-3.5 h-3.5" />
+                        <span>
+                          {savingAi
+                            ? 'Đang lưu...'
+                            : 'Xác nhận & Lưu đề xuất vào hồ sơ'}
+                        </span>
+                      </button>
+                    </div>
+                    {saveAiNotice && (
+                      <p className="text-xs text-emerald-800 flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>{saveAiNotice}</span>
+                      </p>
+                    )}
+                    {saveAiError && (
+                      <p className="text-xs text-red-800">{saveAiError}</p>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted pt-2 border-t border-limestone">
+                    Kết quả AI không tự động lưu vào cơ sở dữ liệu. Quản trị viên hoặc người kiểm duyệt có thể đăng nhập để đối chiếu và lưu chính thức.
+                  </p>
+                )}
               </div>
             )}
           </div>
@@ -446,6 +605,7 @@ export function ChiTietPage() {
             <dl>
               <DetailRow label="Mã hồ sơ" value={record.identifier} />
               <DetailRow label="Tên tư liệu" value={record.title} />
+              <DetailRow label="Tên gọi khác" value={record.ten_goi_khac} />
               <DetailRow label="Loại tư liệu" value={record.type} />
               <DetailRow
                 label="Nơi lưu giữ hiện nay"
@@ -594,6 +754,16 @@ export function ChiTietPage() {
           </div>
         </div>
       </section>
+
+      <SubmissionModal
+        open={editRequestOpen}
+        onClose={() => setEditRequestOpen(false)}
+        targetRecord={{
+          identifier: record.identifier,
+          title: record.title,
+          noi_luu_giu_hien_nay: record.noi_luu_giu_hien_nay,
+        }}
+      />
     </div>
   );
 }

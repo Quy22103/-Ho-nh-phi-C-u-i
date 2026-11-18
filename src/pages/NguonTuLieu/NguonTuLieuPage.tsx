@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Archive } from 'lucide-react';
+import { Archive, FilePlus2 } from 'lucide-react';
 import { fetchSources } from '../../api/client.ts';
+import { SubmissionModal } from '../../components/SubmissionModal.tsx';
 import { VerificationBadge } from '../../components/VerificationBadge.tsx';
 import type { ArchiveSource } from '../../types/archive.ts';
 
@@ -25,6 +26,7 @@ export function NguonTuLieuPage() {
   const [selectedType, setSelectedType] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [submitOpen, setSubmitOpen] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -61,23 +63,33 @@ export function NguonTuLieuPage() {
           </p>
         </div>
 
-        <div className="shrink-0">
-          <label className="sr-only" htmlFor="source-type-filter">
-            Lọc theo loại nguồn
-          </label>
-          <select
-            id="source-type-filter"
-            value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
-            className="px-3 py-2 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+        <div className="flex flex-wrap items-center gap-3 shrink-0">
+          <button
+            type="button"
+            onClick={() => setSubmitOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold bg-walnut text-ivory rounded hover:bg-walnut-deep transition-colors"
           >
-            <option value="">Tất cả loại nguồn</option>
-            {SOURCE_TYPES.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
+            <FilePlus2 className="w-4 h-4" />
+            <span>Ghi nhận đóng góp / nguồn tư liệu</span>
+          </button>
+          <div>
+            <label className="sr-only" htmlFor="source-type-filter">
+              Lọc theo loại nguồn
+            </label>
+            <select
+              id="source-type-filter"
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)}
+              className="px-3 py-2 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+            >
+              <option value="">Tất cả loại nguồn</option>
+              {SOURCE_TYPES.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
 
@@ -146,12 +158,52 @@ export function NguonTuLieuPage() {
                 </div>
                 <div>
                   <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
+                    Đơn vị / cá nhân lưu giữ
+                  </dt>
+                  <dd className="text-ink mt-0.5">
+                    {src.don_vi_hoac_ca_nhan_luu_giu || 'Chưa có thông tin'}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
                     Địa điểm
                   </dt>
                   <dd className="text-ink mt-0.5">
                     {src.dia_diem || 'Chưa xác định'}
                   </dd>
                 </div>
+                {src.nguoi_chup_anh && (
+                  <div>
+                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
+                      Người chụp ảnh
+                    </dt>
+                    <dd className="text-ink mt-0.5">{src.nguoi_chup_anh}</dd>
+                  </div>
+                )}
+                {src.nguoi_phien_am && (
+                  <div>
+                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
+                      Người phiên âm
+                    </dt>
+                    <dd className="text-ink mt-0.5">{src.nguoi_phien_am}</dd>
+                  </div>
+                )}
+                {src.nguoi_kiem_chung && (
+                  <div>
+                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
+                      Người kiểm chứng
+                    </dt>
+                    <dd className="text-ink mt-0.5">{src.nguoi_kiem_chung}</dd>
+                  </div>
+                )}
+                {src.tai_lieu_tham_khao && (
+                  <div className="md:col-span-2">
+                    <dt className="text-xs font-semibold text-muted uppercase tracking-wider">
+                      Tài liệu tham khảo
+                    </dt>
+                    <dd className="text-ink mt-0.5">{src.tai_lieu_tham_khao}</dd>
+                  </div>
+                )}
               </dl>
 
               {src.ghi_chu && (
@@ -195,6 +247,11 @@ export function NguonTuLieuPage() {
           ))}
         </div>
       )}
+
+      <SubmissionModal
+        open={submitOpen}
+        onClose={() => setSubmitOpen(false)}
+      />
     </div>
   );
 }

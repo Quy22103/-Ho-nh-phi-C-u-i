@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { SubmissionModal } from '../components/SubmissionModal.tsx';
+import { SubmissionLookupModal } from '../components/SubmissionLookupModal.tsx';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -19,6 +20,7 @@ const NAV_ITEMS = [
 export function MainLayout({ children }: MainLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [submissionOpen, setSubmissionOpen] = useState(false);
+  const [lookupOpen, setLookupOpen] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -162,7 +164,7 @@ export function MainLayout({ children }: MainLayoutProps) {
               Hệ thống lưu trữ tư liệu di sản Hán Nôm tại đình, chùa, đền, miếu và nhà thờ họ trên địa bàn thành phố Hà Nội. Mọi tư liệu đều gắn nguồn gốc và trạng thái kiểm chứng minh bạch.
             </p>
           </div>
-          <div className="flex flex-wrap items-center gap-4 text-xs font-medium">
+          <div className="flex flex-wrap items-center gap-3 text-xs font-medium">
             <button
               type="button"
               onClick={() => setSubmissionOpen(true)}
@@ -170,11 +172,24 @@ export function MainLayout({ children }: MainLayoutProps) {
             >
               Đóng góp tư liệu mới
             </button>
+            <button
+              type="button"
+              onClick={() => setLookupOpen(true)}
+              className="px-4 py-2 rounded border border-limestone bg-ivory text-walnut-deep hover:bg-parchment transition-colors whitespace-nowrap"
+            >
+              Tra cứu mã tiếp nhận
+            </button>
             <Link
               to="/gioi-thieu"
               className="text-walnut-deep hover:underline whitespace-nowrap"
             >
               Giới thiệu & Xuất dữ liệu
+            </Link>
+            <Link
+              to="/admin/login"
+              className="text-muted hover:text-walnut-deep hover:underline whitespace-nowrap"
+            >
+              Đăng nhập kiểm duyệt
             </Link>
           </div>
         </div>
@@ -183,6 +198,10 @@ export function MainLayout({ children }: MainLayoutProps) {
       <SubmissionModal
         open={submissionOpen}
         onClose={() => setSubmissionOpen(false)}
+      />
+      <SubmissionLookupModal
+        open={lookupOpen}
+        onClose={() => setLookupOpen(false)}
       />
     </div>
   );

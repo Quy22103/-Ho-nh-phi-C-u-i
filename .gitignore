@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+data/users.json
+data/.session_secret
+storage/pending_images/*
+!storage/pending_images/.gitkeep
+

@@ -25,7 +25,14 @@ export function DanhSachPage() {
     xaHienNay: string[];
     xaLichSu: string[];
     thonLang: string[];
-  }>({ huyenLichSu: [], xaHienNay: [], xaLichSu: [], thonLang: [] });
+    repositories: string[];
+  }>({
+    huyenLichSu: [],
+    xaHienNay: [],
+    xaLichSu: [],
+    thonLang: [],
+    repositories: [],
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [showFiltersMobile, setShowFiltersMobile] = useState(false);
@@ -42,9 +49,12 @@ export function DanhSachPage() {
     dongHo: searchParams.get('dongHo') || '',
     nhaThoHo: searchParams.get('nhaThoHo') || '',
     giaDinh: searchParams.get('giaDinh') || '',
+    currentRepository: searchParams.get('currentRepository') || '',
     verification: searchParams.get('verification') || '',
     edition: searchParams.get('edition') || '',
     condition: searchParams.get('condition') || '',
+    sort:
+      (searchParams.get('sort') as FilterQuery['sort']) || 'newest',
     page: Number(searchParams.get('page')) || 1,
     limit: PAGE_LIMIT,
   };
@@ -109,7 +119,7 @@ export function DanhSachPage() {
             Kết hợp nhiều bộ lọc theo loại tư liệu, địa điểm, địa danh hiện hành/lịch sử, dòng họ và mức kiểm chứng.
           </p>
         </div>
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={() => setShowFiltersMobile((v) => !v)}
@@ -118,6 +128,17 @@ export function DanhSachPage() {
             <Filter className="w-4 h-4" />
             <span>Bộ lọc</span>
           </button>
+          <select
+            aria-label="Sắp xếp hồ sơ"
+            value={currentQuery.sort || 'newest'}
+            onChange={(e) => updateParam('sort', e.target.value)}
+            className="px-3 py-1.5 text-xs font-medium bg-ivory border border-limestone rounded focus:outline-none focus:border-bronze"
+          >
+            <option value="newest">Sắp xếp: Mới cập nhật</option>
+            <option value="title_asc">Sắp xếp: Tên tư liệu (A–Z)</option>
+            <option value="identifier_asc">Sắp xếp: Mã định danh</option>
+            <option value="verified_first">Sắp xếp: Ưu tiên đã kiểm chứng</option>
+          </select>
           <div className="inline-flex rounded border border-limestone bg-parchment/50 p-0.5">
             <button
               type="button"
@@ -354,6 +375,7 @@ export function DanhSachPage() {
             >
               <option value="">Tất cả loại bản</option>
               <option value="Ảnh bản gốc">Ảnh bản gốc</option>
+              <option value="Bản chụp">Bản chụp</option>
               <option value="Ảnh bản dập">Ảnh bản dập</option>
               <option value="Bản sao">Bản sao</option>
               <option value="Bản phục chế">Bản phục chế</option>
@@ -377,8 +399,29 @@ export function DanhSachPage() {
               <option value="Còn nguyên vẹn">Còn nguyên vẹn</option>
               <option value="Hư hỏng">Hư hỏng</option>
               <option value="Mất một phần">Mất một phần</option>
+              <option value="Không còn bản gốc">Không còn bản gốc</option>
               <option value="Không xác định">Không xác định</option>
             </select>
+          </div>
+
+          {/* 8. Nơi lưu giữ hiện nay */}
+          <div>
+            <label className="block text-xs font-semibold text-ink mb-1.5">
+              8. Nơi lưu giữ hiện nay
+            </label>
+            <input
+              type="text"
+              list="repositories-list"
+              value={currentQuery.currentRepository || ''}
+              onChange={(e) => updateParam('currentRepository', e.target.value)}
+              placeholder="Tên đình, chùa, đền, nhà thờ họ..."
+              className="w-full px-3 py-1.5 text-xs bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+            />
+            <datalist id="repositories-list">
+              {facets.repositories.map((v) => (
+                <option key={v} value={v} />
+              ))}
+            </datalist>
           </div>
         </aside>
 
@@ -462,6 +505,15 @@ export function DanhSachPage() {
                             referrerPolicy="no-referrer"
                             className="w-full h-full object-cover"
                           />
+                        ) : rec.image_restriction_reason?.includes(
+                            'chưa đính kèm hình ảnh'
+                          ) ? (
+                          <div className="px-6 text-center text-xs text-muted flex flex-col items-center gap-2">
+                            <FileText className="w-5 h-5 text-bronze/70" />
+                            <span>
+                              Hồ sơ văn bản · Bản phiên âm (không kèm ảnh)
+                            </span>
+                          </div>
                         ) : (
                           <div className="px-6 text-center text-xs text-muted flex flex-col items-center gap-2">
                             <ShieldAlert className="w-5 h-5 text-bronze/70" />
@@ -483,6 +535,11 @@ export function DanhSachPage() {
                         <h3 className="text-xl font-semibold text-walnut-deep leading-snug">
                           {rec.title || 'Chưa có tên tư liệu'}
                         </h3>
+                        {rec.ten_goi_khac && (
+                          <p className="text-xs text-muted italic">
+                            Tên gọi khác: {rec.ten_goi_khac}
+                          </p>
+                        )}
 
                         {rec.chu_han_nom && (
                           <p

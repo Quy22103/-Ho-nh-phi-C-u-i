@@ -1,12 +1,18 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { serverConfig } from './server/config/env.ts';
 import { apiRouter } from './server/routes/api.ts';
+import { bootstrapAdminFromEnvIfConfigured } from './server/services/authService.ts';
 
 async function startServer() {
+  await bootstrapAdminFromEnvIfConfigured();
+
   const app = express();
 
+  app.set('trust proxy', 1);
+  app.use(cookieParser());
   app.use(express.json({ limit: '1mb' }));
 
   app.use('/api', apiRouter);

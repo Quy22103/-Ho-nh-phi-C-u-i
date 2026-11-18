@@ -20,7 +20,7 @@ import {
 const MODEL_NAME = 'gemini-4-hydrogen';
 
 const EMPTY_DB_RESPONSE =
-  'Hiện chưa có tư liệu phù hợp trong cơ sở dữ liệu của dự án. Bạn có thể cung cấp thêm thông tin hoặc liên hệ Ban quản lý để bổ sung.';
+  'Hiện tại hệ thống chưa có tư liệu phù hợp với câu hỏi của bạn.';
 
 const UNCLEAR_IMAGE_MESSAGE =
   'Ảnh chưa đủ rõ để đề xuất phiên âm đáng tin cậy. Cần ảnh rõ hơn hoặc người có chuyên môn kiểm tra trực tiếp.';
@@ -79,11 +79,17 @@ function searchMatchingRecords(
   const meaningfulTokens = rawTokens.filter((t) => !stopWords.has(t));
 
   const wantsUnverified =
-    qNorm.includes('chua kiem chung') || qNorm.includes('cho kiem chung');
+    qNorm.includes('chua kiem chung') ||
+    qNorm.includes('cho kiem chung') ||
+    qNorm.includes('chua kiem');
   const wantsVerified =
-    !wantsUnverified && qNorm.includes('da kiem chung');
+    !wantsUnverified &&
+    (qNorm.includes('da kiem chung') || qNorm.includes('duoc kiem chung'));
   const wantsUntranscribed =
-    qNorm.includes('chua duoc phien am') || qNorm.includes('chua phien am');
+    qNorm.includes('chua duoc phien am') ||
+    qNorm.includes('chua co phien am') ||
+    qNorm.includes('chua phien am');
+  const wantsHasImages = qNorm.includes('co anh') || qNorm.includes('hinh anh');
   const wantsIntact = qNorm.includes('nguyen ven');
 
   const scored: Array<{ record: PublicRecord; score: number }> = [];
@@ -100,6 +106,9 @@ function searchMatchingRecords(
 
     if (wantsUntranscribed && !pub.phien_am.noi_dung.trim()) score += 5;
     if (wantsUntranscribed && pub.phien_am.noi_dung.trim()) continue;
+
+    if (wantsHasImages && (raw.images?.length || 0) > 0) score += 4;
+    if (wantsHasImages && (raw.images?.length || 0) === 0) continue;
 
     if (
       wantsIntact &&

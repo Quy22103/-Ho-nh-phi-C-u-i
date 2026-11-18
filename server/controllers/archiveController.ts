@@ -1,14 +1,22 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import type { Request, Response } from 'express';
-import { isGeminiConfigured } from '../config/env.ts';
-import type { CitizenSubmissionInput } from '../../src/types/archive.ts';
+import { isGeminiConfigured, serverConfig } from '../config/env.ts';
+import type {
+  CitizenSubmissionInput,
+  ImageType,
+  PendingImageItem,
+} from '../../src/types/archive.ts';
+import { appendAuditLog } from '../services/auditService.ts';
 import {
   computeStats,
   filterPublicRecords,
   getPublicSources,
   readDataset,
+  readSubmissions,
   saveSubmission,
+  writeSubmissions,
 } from '../services/dataService.ts';
 import {
   answerArchiveQuestion,
@@ -79,6 +87,10 @@ export async function listRecords(req: Request, res: Response): Promise<void> {
         typeof req.query.nhaThoHo === 'string' ? req.query.nhaThoHo : undefined,
       giaDinh:
         typeof req.query.giaDinh === 'string' ? req.query.giaDinh : undefined,
+      currentRepository:
+        typeof req.query.currentRepository === 'string'
+          ? req.query.currentRepository
+          : undefined,
       verification:
         typeof req.query.verification === 'string'
           ? req.query.verification
@@ -88,6 +100,13 @@ export async function listRecords(req: Request, res: Response): Promise<void> {
       condition:
         typeof req.query.condition === 'string'
           ? req.query.condition
+          : undefined,
+      sort:
+        req.query.sort === 'title_asc' ||
+        req.query.sort === 'identifier_asc' ||
+        req.query.sort === 'verified_first' ||
+        req.query.sort === 'newest'
+          ? req.query.sort
           : undefined,
       page: req.query.page ? Number(req.query.page) : 1,
       limit: req.query.limit ? Number(req.query.limit) : 12,
@@ -308,7 +327,7 @@ export async function exportJson(_req: Request, res: Response): Promise<void> {
       sources: publicSources,
     };
 
-    const filename = `tu-lieu-hoanh-phi-cau-doi-ha-noi-${getTodayDateString()}.json`;
+    const filename = `tulieu_${getTodayDateString()}.json`;
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     res.send(JSON.stringify(payload, null, 2));
@@ -419,7 +438,7 @@ export async function exportCsv(_req: Request, res: Response): Promise<void> {
     ];
 
     const bom = '\uFEFF';
-    const filename = `tu-lieu-hoanh-phi-cau-doi-ha-noi-${getTodayDateString()}.csv`;
+    const filename = `tulieu_${getTodayDateString()}.csv`;
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
     res.send(bom + csvLines.join('\r\n'));
@@ -429,12 +448,37 @@ export async function exportCsv(_req: Request, res: Response): Promise<void> {
   }
 }
 
+function buildPendingImages(
+  files: Express.Multer.File[] | undefined,
+  input: CitizenSubmissionInput
+): PendingImageItem[] {
+  if (!files || files.length === 0) return [];
+  return files.map((file, idx) => ({
+    image_id: `PIMG-${Date.now()}-${idx}-${crypto.randomBytes(2).toString('hex')}`,
+    filename: file.filename,
+    original_name: file.originalname,
+    mime_type: file.mimetype,
+    size_bytes: file.size,
+    image_type: 'toan_trang' as ImageType,
+    caption: `${input.ten_tu_lieu} (ảnh người gửi ${idx + 1})`,
+    source: input.nguon_anh || input.nguon_xac_minh,
+    nguoi_cho_phep_cong_bo: input.nguoi_cho_phep_cong_bo || '',
+    pham_vi_duoc_phep: input.pham_vi_su_dung || '',
+    permission: 'cho_xac_nhan',
+  }));
+}
+
 export async function postSubmission(
   req: Request,
   res: Response
 ): Promise<void> {
   try {
-    const body = req.body as Partial<CitizenSubmissionInput>;
+    const body = req.body as Omit<
+      Partial<CitizenSubmissionInput>,
+      'xac_nhan_quyen_cong_bo'
+    > & {
+      xac_nhan_quyen_cong_bo?: boolean | string;
+    };
     const cleanText = (v: unknown, max = 1000) =>
       typeof v === 'string' ? v.trim().slice(0, max) : '';
 
@@ -449,9 +493,22 @@ export async function postSubmission(
       dong_ho_hoac_gia_dinh: cleanText(body.dong_ho_hoac_gia_dinh, 200),
       chu_han_nom: cleanText(body.chu_han_nom, 1000),
       phien_am_de_xuat: cleanText(body.phien_am_de_xuat, 1000),
+      dich_nghia_de_xuat: cleanText(body.dich_nghia_de_xuat, 1000),
+      nien_dai_de_xuat: cleanText(body.nien_dai_de_xuat, 200),
       nguoi_cung_cap: cleanText(body.nguoi_cung_cap, 200),
       lien_he: cleanText(body.lien_he, 200),
       nguon_xac_minh: cleanText(body.nguon_xac_minh, 500),
+      nguon_anh: cleanText(body.nguon_anh, 300),
+      nguoi_cho_phep_cong_bo: cleanText(body.nguoi_cho_phep_cong_bo, 200),
+      pham_vi_su_dung: cleanText(body.pham_vi_su_dung, 300),
+      xac_nhan_quyen_cong_bo:
+        body.xac_nhan_quyen_cong_bo === true ||
+        body.xac_nhan_quyen_cong_bo === 'true',
+      target_identifier: cleanText(body.target_identifier, 100) || undefined,
+      loai_dong_gop:
+        body.loai_dong_gop === 'bo_sung_chinh_sua'
+          ? 'bo_sung_chinh_sua'
+          : 'ho_so_moi',
       ghi_chu: cleanText(body.ghi_chu, 1500),
     };
 
@@ -468,15 +525,170 @@ export async function postSubmission(
       return;
     }
 
-    const saved = await saveSubmission(payload);
+    const files = Array.isArray(req.files)
+      ? (req.files as Express.Multer.File[])
+      : [];
+    const pendingImages = buildPendingImages(files, payload);
+    const saved = await saveSubmission(payload, pendingImages);
+
+    await appendAuditLog({
+      ma_ho_so: saved.id,
+      tai_khoan: 'KHACH_TRUY_CAP',
+      vai_tro: 'PUBLIC',
+      hanh_dong: 'GUI_DONG_GOP_MOI',
+      noi_dung_truoc: {},
+      noi_dung_sau: {
+        trang_thai_xu_ly: saved.trang_thai_xu_ly,
+        ten_tu_lieu: payload.ten_tu_lieu,
+        so_anh_cho_duyet: pendingImages.length,
+      },
+      ly_do:
+        payload.loai_dong_gop === 'bo_sung_chinh_sua'
+          ? `Đề nghị bổ sung/chỉnh sửa hồ sơ ${payload.target_identifier || ''}`
+          : 'Người dân gửi tư liệu mới chờ xác nhận',
+    });
+
     res.status(201).json({
       ok: true,
       message:
-        'Đã ghi nhận phiếu đề xuất bổ sung vào hàng chờ kiểm chứng của Ban quản lý. Dữ liệu chính thức sẽ chỉ cập nhật sau khi được xác minh.',
+        'Đã ghi nhận hồ sơ tư liệu mới với trạng thái chờ duyệt (PENDING). Hồ sơ chưa tự động công khai cho tới khi Ban quản lý kiểm tra và phê duyệt.',
       ...saved,
     });
   } catch (err) {
     console.error('Lỗi lưu đề xuất bổ sung:', err);
     res.status(500).json({ error: 'Không thể lưu phiếu đề xuất bổ sung.' });
+  }
+}
+
+export async function lookupSubmissionStatus(
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const id = (req.params.id || '').trim().toUpperCase();
+    const submissions = await readSubmissions();
+    const found = submissions.find(
+      (s) => s.submission_id.toUpperCase() === id
+    );
+    if (!found) {
+      res
+        .status(404)
+        .json({ error: 'Không tìm thấy hồ sơ với mã tiếp nhận này.' });
+      return;
+    }
+
+    // Never return internal contact info or private pending image paths
+    res.json({
+      submission_id: found.submission_id,
+      ten_tu_lieu: found.ten_tu_lieu,
+      loai_tu_lieu: found.loai_tu_lieu,
+      noi_luu_giu: found.noi_luu_giu,
+      ngay_gui: found.ngay_gui,
+      ngay_cap_nhat: found.ngay_cap_nhat,
+      trang_thai_xu_ly: found.trang_thai_xu_ly,
+      ly_do_xu_ly: found.ly_do_xu_ly || '',
+      official_identifier:
+        found.trang_thai_xu_ly === 'DA_CONG_KHAI'
+          ? found.official_identifier
+          : undefined,
+    });
+  } catch {
+    res.status(500).json({ error: 'Không thể tra cứu mã tiếp nhận.' });
+  }
+}
+
+export async function postSupplementToSubmission(
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    const id = (req.params.id || '').trim().toUpperCase();
+    const submissions = await readSubmissions();
+    const idx = submissions.findIndex(
+      (s) => s.submission_id.toUpperCase() === id
+    );
+    if (idx === -1) {
+      res
+        .status(404)
+        .json({ error: 'Không tìm thấy hồ sơ với mã tiếp nhận này.' });
+      return;
+    }
+    const current = submissions[idx];
+    if (current.trang_thai_xu_ly !== 'CAN_BO_SUNG') {
+      res.status(400).json({
+        error:
+          'Chỉ có thể gửi bổ sung trực tiếp khi hồ sơ đang ở trạng thái Cần bổ sung thông tin.',
+      });
+      return;
+    }
+
+    const body = req.body as Record<string, unknown>;
+    const extraText =
+      typeof body.thong_tin_bo_sung === 'string'
+        ? body.thong_tin_bo_sung.trim().slice(0, 2000)
+        : '';
+    const extraSource =
+      typeof body.nguon_bo_sung === 'string'
+        ? body.nguon_bo_sung.trim().slice(0, 500)
+        : '';
+
+    const files = Array.isArray(req.files)
+      ? (req.files as Express.Multer.File[])
+      : [];
+    const newImages: PendingImageItem[] = files.map((file, i) => ({
+      image_id: `PIMG-${Date.now()}-${i}-${crypto.randomBytes(2).toString('hex')}`,
+      filename: file.filename,
+      original_name: file.originalname,
+      mime_type: file.mimetype,
+      size_bytes: file.size,
+      image_type: 'toan_trang',
+      caption: `${current.ten_tu_lieu} (ảnh bổ sung)`,
+      source: extraSource || current.nguon_xac_minh,
+      nguoi_cho_phep_cong_bo: current.nguoi_cho_phep_cong_bo,
+      pham_vi_duoc_phep: current.pham_vi_su_dung,
+      permission: 'cho_xac_nhan',
+    }));
+
+    if (!extraText && newImages.length === 0) {
+      res.status(400).json({
+        error: 'Vui lòng nhập nội dung bổ sung hoặc đính kèm ảnh tư liệu.',
+      });
+      return;
+    }
+
+    current.ghi_chu = [current.ghi_chu, `[Bổ sung]: ${extraText}`]
+      .filter(Boolean)
+      .join('\n');
+    if (extraSource) {
+      current.nguon_xac_minh = `${current.nguon_xac_minh}; ${extraSource}`;
+    }
+    current.pending_images = [...current.pending_images, ...newImages];
+    current.trang_thai_xu_ly = 'PENDING';
+    current.ngay_cap_nhat = new Date().toISOString();
+
+    submissions[idx] = current;
+    await writeSubmissions(submissions);
+
+    await appendAuditLog({
+      ma_ho_so: current.submission_id,
+      tai_khoan: 'KHACH_TRUY_CAP',
+      vai_tro: 'PUBLIC',
+      hanh_dong: 'NGUOI_GUI_BO_SUNG_THONG_TIN',
+      noi_dung_truoc: { trang_thai_xu_ly: 'CAN_BO_SUNG' },
+      noi_dung_sau: {
+        trang_thai_xu_ly: 'PENDING',
+        so_anh_moi: newImages.length,
+      },
+      ly_do: 'Người gửi bổ sung thông tin theo yêu cầu',
+    });
+
+    res.json({
+      ok: true,
+      message:
+        'Đã gửi thông tin bổ sung. Hồ sơ đã quay lại hàng chờ duyệt (PENDING).',
+      trang_thai_xu_ly: current.trang_thai_xu_ly,
+    });
+  } catch {
+    res.status(500).json({ error: 'Không thể gửi thông tin bổ sung.' });
   }
 }

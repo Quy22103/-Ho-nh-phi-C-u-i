@@ -1,12 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { X, CheckCircle2, AlertCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  Check,
+  CheckCircle2,
+  Copy,
+  ImagePlus,
+  X,
+} from 'lucide-react';
 import { submitCitizenContribution } from '../api/client.ts';
 import type { CitizenSubmissionInput } from '../types/archive.ts';
 
 interface SubmissionModalProps {
   open: boolean;
   onClose: () => void;
+  targetRecord?: {
+    identifier: string;
+    title: string;
+    noi_luu_giu_hien_nay: string;
+  };
 }
 
 const INITIAL_FORM: CitizenSubmissionInput = {
@@ -20,17 +32,51 @@ const INITIAL_FORM: CitizenSubmissionInput = {
   dong_ho_hoac_gia_dinh: '',
   chu_han_nom: '',
   phien_am_de_xuat: '',
+  dich_nghia_de_xuat: '',
+  nien_dai_de_xuat: '',
   nguoi_cung_cap: '',
   lien_he: '',
   nguon_xac_minh: '',
+  nguon_anh: '',
+  nguoi_cho_phep_cong_bo: '',
+  pham_vi_su_dung: '',
+  xac_nhan_quyen_cong_bo: false,
+  loai_dong_gop: 'ho_so_moi',
   ghi_chu: '',
 };
 
-export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
+export function SubmissionModal({
+  open,
+  onClose,
+  targetRecord,
+}: SubmissionModalProps) {
   const [form, setForm] = useState<CitizenSubmissionInput>(INITIAL_FORM);
+  const [files, setFiles] = useState<File[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  const [successMsg, setSuccessMsg] = useState('');
+  const [result, setResult] = useState<{
+    id: string;
+    message: string;
+    trang_thai_xu_ly: string;
+  } | null>(null);
+  const [copiedId, setCopiedId] = useState(false);
+
+  useEffect(() => {
+    if (open && targetRecord) {
+      setForm({
+        ...INITIAL_FORM,
+        ten_tu_lieu: targetRecord.title,
+        noi_luu_giu: targetRecord.noi_luu_giu_hien_nay,
+        target_identifier: targetRecord.identifier,
+        loai_dong_gop: 'bo_sung_chinh_sua',
+      });
+    } else if (open && !targetRecord) {
+      setForm(INITIAL_FORM);
+    }
+    setFiles([]);
+    setError('');
+    setResult(null);
+  }, [open, targetRecord]);
 
   if (!open) return null;
 
@@ -38,11 +84,16 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
     e.preventDefault();
     setSubmitting(true);
     setError('');
-    setSuccessMsg('');
+    setResult(null);
     try {
-      const res = await submitCitizenContribution(form);
-      setSuccessMsg(`${res.message} (Mã tiếp nhận: ${res.id})`);
+      const res = await submitCitizenContribution(form, files);
+      setResult({
+        id: res.id,
+        message: res.message,
+        trang_thai_xu_ly: res.trang_thai_xu_ly,
+      });
       setForm(INITIAL_FORM);
+      setFiles([]);
     } catch (err: unknown) {
       const serverMsg = (err as { response?: { data?: { error?: string } } })
         ?.response?.data?.error;
@@ -51,6 +102,17 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
       );
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleCopyCode = async () => {
+    if (!result?.id) return;
+    try {
+      await navigator.clipboard.writeText(result.id);
+      setCopiedId(true);
+      setTimeout(() => setCopiedId(false), 2000);
+    } catch {
+      // Ignore
     }
   };
 
@@ -68,10 +130,12 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
               id="submission-modal-title"
               className="text-2xl font-semibold text-walnut-deep"
             >
-              Đóng góp thông tin tư liệu
+              {targetRecord
+                ? `Đề nghị bổ sung / chỉnh sửa (${targetRecord.identifier})`
+                : 'Đóng góp thông tin tư liệu mới'}
             </h2>
             <p className="text-xs text-muted mt-0.5">
-              Phiếu tiếp nhận dành cho người dân và Ban quản lý di tích, dòng họ (chờ kiểm chứng trước khi đưa vào hồ sơ chính thức).
+              Thông tin và hình ảnh gửi lên sẽ lưu vào hàng chờ duyệt (PENDING), chưa công khai cho tới khi người kiểm duyệt xác minh.
             </p>
           </div>
           <button
@@ -91,10 +155,41 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
               <span>{error}</span>
             </div>
           )}
-          {successMsg && (
-            <div className="flex items-start gap-2.5 p-3.5 rounded border border-emerald-200 bg-emerald-50 text-emerald-900 text-sm">
-              <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" />
-              <span>{successMsg}</span>
+
+          {result && (
+            <div className="p-4 rounded border border-emerald-200 bg-emerald-50 text-emerald-950 text-sm space-y-2">
+              <div className="flex items-start gap-2">
+                <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" />
+                <span>{result.message}</span>
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-emerald-200">
+                <div className="text-xs">
+                  <span>Mã tiếp nhận: </span>
+                  <span className="font-mono font-bold text-sm">
+                    {result.id}
+                  </span>
+                  <span className="ml-2 text-emerald-800">
+                    · Trạng thái: {result.trang_thai_xu_ly}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyCode}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium bg-white border border-emerald-300 rounded hover:bg-emerald-100"
+                >
+                  {copiedId ? (
+                    <>
+                      <Check className="w-3.5 h-3.5" />
+                      <span>Đã sao chép</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Sao chép mã</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           )}
 
@@ -255,6 +350,114 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
                 className="w-full px-3 py-2 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-ink mb-1">
+                Dịch nghĩa (nếu có)
+              </label>
+              <input
+                type="text"
+                value={form.dich_nghia_de_xuat || ''}
+                onChange={(e) =>
+                  setForm({ ...form, dich_nghia_de_xuat: e.target.value })
+                }
+                className="w-full px-3 py-2 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-ink mb-1">
+                Niên đại (nếu có căn cứ)
+              </label>
+              <input
+                type="text"
+                value={form.nien_dai_de_xuat || ''}
+                onChange={(e) =>
+                  setForm({ ...form, nien_dai_de_xuat: e.target.value })
+                }
+                className="w-full px-3 py-2 text-sm bg-white border border-limestone rounded focus:outline-none focus:border-bronze"
+              />
+            </div>
+          </div>
+
+          {/* Image Attachment & Publication Permission Info */}
+          <div className="p-4 rounded border border-limestone bg-parchment/40 space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="text-sm font-semibold text-walnut-deep flex items-center gap-1.5">
+                <ImagePlus className="w-4 h-4 text-bronze" />
+                <span>Đính kèm ảnh tư liệu (tối đa 5 ảnh JPG/PNG/WEBP)</span>
+              </label>
+            </div>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              multiple
+              onChange={(e) =>
+                setFiles(Array.from(e.target.files || []).slice(0, 5))
+              }
+              className="block w-full text-xs text-muted file:mr-3 file:py-1.5 file:px-3 file:rounded file:border file:border-limestone file:text-xs file:font-medium file:bg-ivory file:text-walnut-deep hover:file:bg-parchment"
+            />
+            {files.length > 0 && (
+              <p className="text-xs text-muted">
+                Đã chọn {files.length} tệp: {files.map((f) => f.name).join(', ')}
+              </p>
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-limestone/70">
+              <div>
+                <label className="block text-xs font-medium text-ink mb-1">
+                  Nguồn ảnh
+                </label>
+                <input
+                  type="text"
+                  value={form.nguon_anh || ''}
+                  onChange={(e) =>
+                    setForm({ ...form, nguon_anh: e.target.value })
+                  }
+                  placeholder="Ảnh tự chụp tại di tích / ảnh dòng họ..."
+                  className="w-full px-2.5 py-1.5 text-xs bg-white border border-limestone rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-ink mb-1">
+                  Người có quyền cho phép công bố
+                </label>
+                <input
+                  type="text"
+                  value={form.nguoi_cho_phep_cong_bo || ''}
+                  onChange={(e) =>
+                    setForm({ ...form, nguoi_cho_phep_cong_bo: e.target.value })
+                  }
+                  placeholder="Ban quản lý / Đại diện dòng họ..."
+                  className="w-full px-2.5 py-1.5 text-xs bg-white border border-limestone rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-ink mb-1">
+                  Phạm vi được phép sử dụng
+                </label>
+                <input
+                  type="text"
+                  value={form.pham_vi_su_dung || ''}
+                  onChange={(e) =>
+                    setForm({ ...form, pham_vi_su_dung: e.target.value })
+                  }
+                  placeholder="Công khai phục vụ nghiên cứu, lưu trữ..."
+                  className="w-full px-2.5 py-1.5 text-xs bg-white border border-limestone rounded"
+                />
+              </div>
+              <label className="flex items-center gap-2 text-xs text-ink pt-4">
+                <input
+                  type="checkbox"
+                  checked={Boolean(form.xac_nhan_quyen_cong_bo)}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      xac_nhan_quyen_cong_bo: e.target.checked,
+                    })
+                  }
+                />
+                <span>Đã được Ban quản lý / chủ sở hữu đồng ý công bố</span>
+              </label>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -274,7 +477,7 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
             </div>
             <div>
               <label className="block text-sm font-medium text-ink mb-1">
-                Thông tin liên hệ (chỉ lưu nội bộ)
+                Thông tin liên hệ (lưu nội bộ, không công khai)
               </label>
               <input
                 type="text"
@@ -327,7 +530,7 @@ export function SubmissionModal({ open, onClose }: SubmissionModalProps) {
               disabled={submitting}
               className="px-5 py-2 text-sm font-medium bg-walnut text-ivory rounded hover:bg-walnut-deep disabled:opacity-50 transition-colors"
             >
-              {submitting ? 'Đang ghi nhận...' : 'Gửi đề xuất chờ kiểm chứng'}
+              {submitting ? 'Đang ghi nhận...' : 'Gửi đề xuất chờ xác nhận'}
             </button>
           </div>
         </form>
