@@ -1,0 +1,6 @@
+{
+  "name": "Hồ sơ số Hoành phi – Câu đối Hà Nội",
+  "description": "Hệ thống hồ sơ số thu thập, lưu trữ, số hóa, bảo tồn và tra cứu hoành phi, câu đối tại các địa điểm thờ tự trên toàn địa bàn thành phố Hà Nội.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

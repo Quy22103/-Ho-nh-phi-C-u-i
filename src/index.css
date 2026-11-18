@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", "Noto Serif TC", Georgia, serif;
+  --font-serif: "Source Serif 4", "Noto Serif TC", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-hannom: "Noto Serif TC", "Songti SC", "PMingLiU", serif;
+
+  --color-ivory: #FBF9F5;
+  --color-parchment: #F4EFE6;
+  --color-limestone: #E5DEC9;
+  --color-walnut: #4A3525;
+  --color-walnut-deep: #2E1F14;
+  --color-ink: #292524;
+  --color-muted: #6B6258;
+  --color-bronze: #8C5A2B;
+  --color-gold-soft: #E9D8A6;
+  --color-gold-accent: #C59B38;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    min-height: 100vh;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+.font-hannom {
+  font-family: var(--font-hannom);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
